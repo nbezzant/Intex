@@ -4,11 +4,15 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using Intex.Models;
+using Intex.DAL;
 
 namespace Intex.Controllers
 {
     public class HomeController : Controller
     {
+
+        private NorthwestLabsContext db = new NorthwestLabsContext();
         // GET: Home
         [Authorize]
         public ActionResult Index()
