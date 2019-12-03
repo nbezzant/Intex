@@ -24,6 +24,9 @@
             @Html.DisplayNameFor(model => model.Rush)
         </th>
         <th>
+             @Html.DisplayNameFor(model => model.Conditional_Tests)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Price_Quote)
         </th>
         <th>
@@ -50,6 +53,9 @@
             @Html.DisplayFor(modelItem => item.Rush)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.Conditional_Tests)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.Price_Quote)
         </td>
         <td>
@@ -59,9 +65,9 @@
             @Html.DisplayFor(modelItem => item.Total_Cost)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Work_Order_ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Work_Order_ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Work_Order_ID })
+            @Html.ActionLink("Edit", "Edit", new { id = item.Work_Order_ID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Work_Order_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Work_Order_ID })
         </td>
     </tr>
 }
