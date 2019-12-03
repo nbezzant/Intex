@@ -14,7 +14,7 @@ namespace Intex.Models
         [Display(Name ="Work Order ID")]
         public int Work_Order_ID { get; set; }
 
-        [Display(Name = "Status ID")]
+        [Display(Name = "Status")]
         public int Status_ID{ get; set; }
 
         [Display(Name = "Customer ID")]
@@ -27,12 +27,12 @@ namespace Intex.Models
         public bool Rush { get; set; }
 
         [Display(Name = "Quoted Price")]
-        public float Price_Quote { get; set; }
+        public double Price_Quote { get; set; }
 
         [Display(Name = "Discount")]
         public bool Discount { get; set; }
 
         [Display(Name = "Total Cost")]
-        public float Total_Cost { get; set; }
+        public double Total_Cost { get; set; }
     }
 }

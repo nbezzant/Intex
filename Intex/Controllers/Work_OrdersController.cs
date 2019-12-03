@@ -39,6 +39,8 @@ namespace Intex.Controllers
         // GET: Work_Orders/Create
         public ActionResult Create()
         {
+            Customers cust = db.Customers.FirstOrDefault(p => p.Email == User.Identity.Name);
+            ViewBag.QualifyDiscount = cust.Qualify_Discount; 
             return View();
         }
 
@@ -51,8 +53,16 @@ namespace Intex.Controllers
         {
             if (ModelState.IsValid)
             {
+                Customers cust = db.Customers.FirstOrDefault(p => p.Email == User.Identity.Name);// get customer
+                work_Orders.Customer_ID = cust.Customer_ID;
+                work_Orders.Discount = cust.Qualify_Discount;
+                work_Orders.Price_Quote = -5;
+                work_Orders.Total_Cost = -5;
+                work_Orders.Status_ID = 1;// should start by default as like order sent or something at the begining
+
                 db.Work_Orders.Add(work_Orders);
                 db.SaveChanges();
+                // this will then take you to which assays you want to add.
                 return RedirectToAction("Index");
             }
 
@@ -62,11 +72,14 @@ namespace Intex.Controllers
         // GET: Work_Orders/Edit/5
         public ActionResult Edit(int? id)
         {
+           
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Work_Orders work_Orders = db.Work_Orders.Find(id);
+            ViewBag.Rush = work_Orders.Rush;
+               ViewBag.Discount = work_Orders.Discount;
             if (work_Orders == null)
             {
                 return HttpNotFound();

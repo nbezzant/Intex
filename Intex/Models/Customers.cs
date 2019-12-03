@@ -40,6 +40,9 @@ namespace Intex.Models
         [Required]
         [Display(Name = "Email")]
         public string Email { get; set; }
+        [Display(Name = "Qualify for Discount")]
+        [Required]
+        public bool Qualify_Discount { get; set; }
         [Display(Name = "User Role ID")]
         [Required]
         public int User_Role_ID { get; set; }

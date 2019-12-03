@@ -13,15 +13,11 @@ namespace Intex.Controllers
 {
     public class CustomersController : Controller
     {
-        private NorthwestLabsContext db = new NorthwestLabsContext();
-
+        public NorthwestLabsContext db = new NorthwestLabsContext();
         // GET: Customers
         public ActionResult Home()
         {
-            if(Request.Cookies["key"] != null)
-            {
-
-            }
+            Customers cust = db.Customers.FirstOrDefault(p => p.Email == User.Identity.Name);
             return View();
         }
         public ActionResult Index()
@@ -32,6 +28,10 @@ namespace Intex.Controllers
         // GET: Customers/Details/5
         public ActionResult Details(int? id)
         {
+            if (id == null) {
+                Customers cust = db.Customers.FirstOrDefault(p => p.Email == User.Identity.Name);
+                id = cust.Customer_ID;
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -59,6 +59,7 @@ namespace Intex.Controllers
         {
             if (ModelState.IsValid)
             {
+                customers.User_Role_ID = 1; // 1 should be the customer role and it should be default, only an admin should be able to change it.
                 db.Customers.Add(customers);
                 db.SaveChanges();
                 return RedirectToAction("Index");
