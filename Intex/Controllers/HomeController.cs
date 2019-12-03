@@ -30,12 +30,10 @@ namespace Intex.Controllers
             String email = form["Email address"].ToString();
             String password = form["Password"].ToString();
 
-            if (string.Equals(email, "greg@test.com") && (string.Equals(password, "greg")))
+            if (db.Customers.FirstOrDefault(p=> p.Email == email && p.Password == password)!= null)
             {
                 FormsAuthentication.SetAuthCookie(email, rememberMe);
-
                 return RedirectToAction("Index", "Home");
-
             }
             else
             {

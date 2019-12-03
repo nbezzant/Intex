@@ -8,7 +8,11 @@
 {
     <label for="inputEmail">Email address</label>
     @Html.TextBox("Email address")
+    <br />
     <label for="inputPassword">Password</label>
     @Html.Password("Password")
+    <br />
     <button type="submit">Login</button>
+    <br />
+    @Html.ActionLink("Create Customer Account","Create","Customers")
 }

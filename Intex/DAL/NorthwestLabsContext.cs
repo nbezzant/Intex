@@ -10,7 +10,7 @@ namespace Intex.DAL
     public class NorthwestLabsContext : DbContext
     {
         public NorthwestLabsContext()
-            :base("NorthwestContext")
+            :base("NorthwestLabsContext")
         {
 
         }
