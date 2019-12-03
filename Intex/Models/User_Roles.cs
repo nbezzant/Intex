@@ -10,12 +10,12 @@ namespace Intex.Models
     [Table("User_Roles")]
     public class User_Roles
     {
-        [Required]
         [Key]
-        public int User_Role_ID { get; }
+        [Required]
+        public int User_Role_ID { get; set; }
         [Display(Name ="User Role")]
-        public string User_Role { get; }
+        public string User_Role { get; set; }
         [Display(Name ="User Role Description")]
-        public string User_Role_Desc { get; }
+        public string User_Role_Desc { get; set; }
     }
 }

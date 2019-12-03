@@ -10,8 +10,10 @@ namespace Intex.Models
     [Table("Compound_Receipts")]
     public class Compound_Receipts
     {
+        [Key, Column(Order=1)]
         [Display(Name = "Labs Tests Number")]
         public int LT { get; set; }
+        [Key, Column(Order = 2)]
         [Display(Name = "Compound Sequence Code")]
         public int Compound_Sequence_Code { get; set; }
         [Display(Name = "Compound Name")]

@@ -12,8 +12,8 @@ namespace Intex.Models
     {
         [Key]
         [Display(Name ="Status ID")]
-        public int Status_ID { get; }
+        public int Status_ID { get; set; }
         [Display(Name = "Status Description")]
-        public string Status_Desc { get; }
+        public string Status_Desc { get; set; }
     }
 }
