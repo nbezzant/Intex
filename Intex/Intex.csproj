@@ -116,7 +116,6 @@
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\EngineerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\MaterialsController.cs" />
     <Compile Include="Controllers\Work_OrdersController.cs" />
     <Compile Include="DAL\NorthwestLabsContext.cs" />
     <Compile Include="Global.asax.cs">
@@ -162,11 +161,11 @@
     <Content Include="Views\Customers\Home.cshtml" />
     <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="Views\Contact\Email.cshtml" />
-    <Content Include="Views\Materials\Create.cshtml" />
-    <Content Include="Views\Materials\Delete.cshtml" />
-    <Content Include="Views\Materials\Details.cshtml" />
-    <Content Include="Views\Materials\Edit.cshtml" />
-    <Content Include="Views\Materials\Index.cshtml" />
+    <Content Include="Views\Engineer\CreateMaterial.cshtml" />
+    <Content Include="Views\Engineer\DeleteMaterial.cshtml" />
+    <Content Include="Views\Engineer\DetailsMaterial.cshtml" />
+    <Content Include="Views\Engineer\EditMaterial.cshtml" />
+    <Content Include="Views\Engineer\ListMaterials.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

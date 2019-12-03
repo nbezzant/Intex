@@ -22,13 +22,13 @@ namespace Intex.Controllers
         //inside here will be materials edits and stuff.
 
         // GET: Materials
-        public ActionResult List()
+        public ActionResult ListMaterials()
         {
             return View(db.Materials.ToList());
         }
 
         // GET: Materials/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult DetailsMaterial(int? id)
         {
             if (id == null)
             {
@@ -43,7 +43,7 @@ namespace Intex.Controllers
         }
 
         // GET: Materials/Create
-        public ActionResult Create()
+        public ActionResult CreateMaterial()
         {
             return View();
         }
@@ -53,7 +53,7 @@ namespace Intex.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Material_ID,Material_Name")] Materials materials)
+        public ActionResult CreateMaterial([Bind(Include = "Material_ID,Material_Name")] Materials materials)
         {
             if (ModelState.IsValid)
             {
@@ -66,7 +66,7 @@ namespace Intex.Controllers
         }
 
         // GET: Materials/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult EditMaterial(int? id)
         {
             if (id == null)
             {
@@ -85,7 +85,7 @@ namespace Intex.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Material_ID,Material_Name")] Materials materials)
+        public ActionResult EditMaterial([Bind(Include = "Material_ID,Material_Name")] Materials materials)
         {
             if (ModelState.IsValid)
             {
@@ -97,7 +97,7 @@ namespace Intex.Controllers
         }
 
         // GET: Materials/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult DeleteMaterial(int? id)
         {
             if (id == null)
             {
@@ -112,7 +112,7 @@ namespace Intex.Controllers
         }
 
         // POST: Materials/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName("DeleteMaterial")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
