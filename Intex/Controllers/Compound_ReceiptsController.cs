@@ -11,126 +11,111 @@ using Intex.Models;
 
 namespace Intex.Controllers
 {
-    public class CustomersController : Controller
+    public class Compound_ReceiptsController : Controller
     {
-        public NorthwestLabsContext db = new NorthwestLabsContext();
-        // GET: Customers
-        public ActionResult Home()
+        private NorthwestLabsContext db = new NorthwestLabsContext();
+
+        // GET: Compound_Receipts
+        public ActionResult ListWork_Orders()
         {
-            Customers cust = db.Customers.FirstOrDefault(p => p.Email == User.Identity.Name);
-            return View(cust);
+            return View(db.Work_Orders.ToList());
         }
         public ActionResult Index()
         {
-            return View(db.Customers.ToList());
+            return View(db.Compound_Receipts.ToList());
         }
 
-        // GET: Customers/Details/5
+        // GET: Compound_Receipts/Details/5
         public ActionResult Details(int? id)
         {
-            if (id == null) {
-                Customers cust = db.Customers.FirstOrDefault(p => p.Email == User.Identity.Name);
-                id = cust.Customer_ID;
-            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Customers customers = db.Customers.Find(id);
-            if (customers == null)
+            Compound_Receipts compound_Receipts = db.Compound_Receipts.Find(id);
+            if (compound_Receipts == null)
             {
                 return HttpNotFound();
             }
-            return View(customers);
+            return View(compound_Receipts);
         }
 
-        // GET: Customers/Create
+        // GET: Compound_Receipts/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Customers/Create
+        // POST: Compound_Receipts/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Customer_ID,Username,Password,First_Name,Last_Name,Street_Address,City,State,Phone,Email,User_Role_ID")] Customers customers)
+        public ActionResult Create([Bind(Include = "LT,Compound_Sequence_Code,Compound_Name,Quantity,Date_Arrived,Received_By,Date_Due,Appearance,Indicated_Weight,Molecular_Mass,Actual_Weight,MTD,Confirmation_Date,Confirmation_Time,Work_Order_ID")] Compound_Receipts compound_Receipts)
         {
-            string email = customers.Email;
-   
             if (ModelState.IsValid)
             {
-                customers.User_Role_ID = 1; // 1 should be the customer role and it should be default, only an admin should be able to change it.
-                if (db.Customers.FirstOrDefault(p => p.Email == email) != null)
-                {
-                    ViewBag.Message = "This email has already been used.";
-                    return View(customers);
-                }
-                else
-                {
-                db.Customers.Add(customers);
+                db.Compound_Receipts.Add(compound_Receipts);
                 db.SaveChanges();
                 return RedirectToAction("Index");
-                }
             }
 
-            return View(customers);
+            return View(compound_Receipts);
         }
 
-        // GET: Customers/Edit/5
+        // GET: Compound_Receipts/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Customers customers = db.Customers.Find(id);
-            if (customers == null)
+            Compound_Receipts compound_Receipts = db.Compound_Receipts.Find(id);
+            if (compound_Receipts == null)
             {
                 return HttpNotFound();
             }
-            return View(customers);
+            return View(compound_Receipts);
         }
 
-        // POST: Customers/Edit/5
+        // POST: Compound_Receipts/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Customer_ID,Username,Password,First_Name,Last_Name,Street_Address,City,State,Phone,Email,User_Role_ID")] Customers customers)
+        public ActionResult Edit([Bind(Include = "LT,Compound_Sequence_Code,Compound_Name,Quantity,Date_Arrived,Received_By,Date_Due,Appearance,Indicated_Weight,Molecular_Mass,Actual_Weight,MTD,Confirmation_Date,Confirmation_Time,Work_Order_ID")] Compound_Receipts compound_Receipts)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(customers).State = EntityState.Modified;
+                db.Entry(compound_Receipts).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(customers);
+            return View(compound_Receipts);
         }
 
-        // GET: Customers/Delete/5
+        // GET: Compound_Receipts/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Customers customers = db.Customers.Find(id);
-            if (customers == null)
+            Compound_Receipts compound_Receipts = db.Compound_Receipts.Find(id);
+            if (compound_Receipts == null)
             {
                 return HttpNotFound();
             }
-            return View(customers);
+            return View(compound_Receipts);
         }
 
-        // POST: Customers/Delete/5
+        // POST: Compound_Receipts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Customers customers = db.Customers.Find(id);
-            db.Customers.Remove(customers);
+            Compound_Receipts compound_Receipts = db.Compound_Receipts.Find(id);
+            db.Compound_Receipts.Remove(compound_Receipts);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -1,0 +1,71 @@
+﻿@model IEnumerable<Intex.Models.Work_Orders>
+
+@{
+    ViewBag.Title = "ListWork_Orders";
+}
+
+<h2>ListWork_Orders</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Status_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Customer_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Instructions)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Conditional_Tests)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rush)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price_Quote)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Discount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Total_Cost)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Customer_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Instructions)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Conditional_Tests)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rush)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price_Quote)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Discount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Total_Cost)
+        </td>
+        <td>
+            @Html.ActionLink("Details", "Details", new { id=item.Work_Order_ID }) 
+        </td>
+    </tr>
+}
+
+</table>
