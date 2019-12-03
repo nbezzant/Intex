@@ -12,6 +12,9 @@
     <label for="inputPassword">Password</label>
     @Html.Password("Password")
     <br />
+    <div style="color:red;">
+        @Html.Raw(ViewBag.Error)
+    </div>
     <button type="submit">Login</button>
     <br />
     @Html.ActionLink("Create Customer Account","Create","Customers")
