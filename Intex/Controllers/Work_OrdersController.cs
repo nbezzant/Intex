@@ -15,6 +15,7 @@ namespace Intex.Controllers
     {
         private NorthwestLabsContext db = new NorthwestLabsContext();
         public List<Work_Orders> lstWork_Orders= new List<Work_Orders>();
+        public List<Status> lstStatuses = new List<Status>();
         // GET: Work_Orders
         public ActionResult Index()
         {
@@ -22,9 +23,19 @@ namespace Intex.Controllers
             Customers cust = db.Customers.FirstOrDefault(p => p.Email == User.Identity.Name);
             if (cust != null)
             {
+                ViewBag.Statuses = "";
                 lstWork_Orders = db.Work_Orders
                .Where(o => o.Customer_ID == cust.Customer_ID)
                .ToList();
+
+
+                foreach (Work_Orders order in lstWork_Orders)
+                {
+                    Status myStatus = db.Statuses.FirstOrDefault(o => o.Status_ID == order.Status_ID);
+                    string sStatus = myStatus.Status_Desc;
+                    ViewBag.Statuses = ViewBag.Statuses + sStatus + ",";
+
+                }
 
                 return View(lstWork_Orders);
             }
