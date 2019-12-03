@@ -11,125 +11,107 @@ using Intex.Models;
 
 namespace Intex.Controllers
 {
-    public class CustomersController : Controller
+    public class MaterialsController : Controller
     {
         private NorthwestLabsContext db = new NorthwestLabsContext();
 
-        // GET: Customers
-        public ActionResult Home()
-        {
-            if(Request.Cookies["key"] != null)
-            {
-
-            }
-            return View();
-        }
+        // GET: Materials
         public ActionResult Index()
         {
-            return View(db.Customers.ToList());
+            return View(db.Materials.ToList());
         }
 
-        // GET: Customers/Details/5
+        // GET: Materials/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Customers customers = db.Customers.Find(id);
-            if (customers == null)
+            Materials materials = db.Materials.Find(id);
+            if (materials == null)
             {
                 return HttpNotFound();
             }
-            return View(customers);
+            return View(materials);
         }
 
-        // GET: Customers/Create
+        // GET: Materials/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Customers/Create
+        // POST: Materials/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Customer_ID,Username,Password,First_Name,Last_Name,Street_Address,City,State,Phone,Email,User_Role_ID")] Customers customers)
+        public ActionResult Create([Bind(Include = "Material_ID,Material_Name")] Materials materials)
         {
-            string email = customers.Email;
-   
             if (ModelState.IsValid)
             {
-                if (db.Customers.FirstOrDefault(p => p.Email == email) != null)
-                {
-                    ViewBag.Message = "This email has already been used.";
-                    return View(customers);
-                }
-                else
-                {
-                db.Customers.Add(customers);
+                db.Materials.Add(materials);
                 db.SaveChanges();
                 return RedirectToAction("Index");
-                }
             }
 
-            return View(customers);
+            return View(materials);
         }
 
-        // GET: Customers/Edit/5
+        // GET: Materials/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Customers customers = db.Customers.Find(id);
-            if (customers == null)
+            Materials materials = db.Materials.Find(id);
+            if (materials == null)
             {
                 return HttpNotFound();
             }
-            return View(customers);
+            return View(materials);
         }
 
-        // POST: Customers/Edit/5
+        // POST: Materials/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Customer_ID,Username,Password,First_Name,Last_Name,Street_Address,City,State,Phone,Email,User_Role_ID")] Customers customers)
+        public ActionResult Edit([Bind(Include = "Material_ID,Material_Name")] Materials materials)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(customers).State = EntityState.Modified;
+                db.Entry(materials).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(customers);
+            return View(materials);
         }
 
-        // GET: Customers/Delete/5
+        // GET: Materials/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Customers customers = db.Customers.Find(id);
-            if (customers == null)
+            Materials materials = db.Materials.Find(id);
+            if (materials == null)
             {
                 return HttpNotFound();
             }
-            return View(customers);
+            return View(materials);
         }
 
-        // POST: Customers/Delete/5
+        // POST: Materials/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Customers customers = db.Customers.Find(id);
-            db.Customers.Remove(customers);
+            Materials materials = db.Materials.Find(id);
+            db.Materials.Remove(materials);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

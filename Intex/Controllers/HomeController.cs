@@ -29,6 +29,7 @@ namespace Intex.Controllers
             String email = form["Email address"].ToString();
             String password = form["Password"].ToString();
 
+
             if (db.Customers.FirstOrDefault(p=> p.Email == email && p.Password == password)!= null)
             {
                 FormsAuthentication.SetAuthCookie(email, rememberMe);
