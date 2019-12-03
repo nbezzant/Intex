@@ -18,6 +18,8 @@ namespace Intex.Controllers
         // GET: Work_Orders
         public ActionResult Index()
         {
+            Customers cust = db.Customers.FirstOrDefault(p => p.Email == User.Identity.Name);
+    
             return View(db.Work_Orders.ToList());
         }
 
@@ -49,11 +51,15 @@ namespace Intex.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Work_Order_ID,Status_ID,Customer_ID,Instructions,Rush,Price_Quote,Discount,Total_Cost")] Work_Orders work_Orders)
+        public ActionResult Create([Bind(Include = "Work_Order_ID,Status_ID,Customer_ID,Instructions,Rush,Conditional_Tests,Price_Quote,Discount,Total_Cost")] Work_Orders work_Orders)
         {
             if (ModelState.IsValid)
             {
                 Customers cust = db.Customers.FirstOrDefault(p => p.Email == User.Identity.Name);// get customer
+                if(work_Orders.Instructions == null)
+                {
+                    work_Orders.Instructions = "";
+                }
                 work_Orders.Customer_ID = cust.Customer_ID;
                 work_Orders.Discount = cust.Qualify_Discount;
                 work_Orders.Price_Quote = -5;
