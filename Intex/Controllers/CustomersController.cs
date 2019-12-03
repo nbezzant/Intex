@@ -57,12 +57,22 @@ namespace Intex.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Customer_ID,Username,Password,First_Name,Last_Name,Street_Address,City,State,Phone,Email,User_Role_ID")] Customers customers)
         {
+            string email = customers.Email;
+   
             if (ModelState.IsValid)
             {
                 customers.User_Role_ID = 1; // 1 should be the customer role and it should be default, only an admin should be able to change it.
+                if (db.Customers.FirstOrDefault(p => p.Email == email) != null)
+                {
+                    ViewBag.Message = "This email has already been used.";
+                    return View(customers);
+                }
+                else
+                {
                 db.Customers.Add(customers);
                 db.SaveChanges();
                 return RedirectToAction("Index");
+                }
             }
 
             return View(customers);

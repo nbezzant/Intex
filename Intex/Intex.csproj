@@ -161,6 +161,11 @@
     <Content Include="Views\Customers\Home.cshtml" />
     <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="Views\Contact\Email.cshtml" />
+    <Content Include="Views\Engineer\CreateMaterial.cshtml" />
+    <Content Include="Views\Engineer\DeleteMaterial.cshtml" />
+    <Content Include="Views\Engineer\DetailsMaterial.cshtml" />
+    <Content Include="Views\Engineer\EditMaterial.cshtml" />
+    <Content Include="Views\Engineer\ListMaterials.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
