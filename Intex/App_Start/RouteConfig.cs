@@ -18,6 +18,12 @@ namespace Intex
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+                name: "Email",
+                url: "{controller}/{action}/{email}/{name}",
+                defaults: new { controller = "Contact", action = "Email", email = UrlParameter.Optional, name = UrlParameter.Optional }
+                );
         }
     }
 }
