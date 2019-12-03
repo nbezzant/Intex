@@ -14,7 +14,6 @@ namespace Intex.Controllers
 
         private NorthwestLabsContext db = new NorthwestLabsContext();
         // GET: Home
-        [Authorize]
         public ActionResult Index()
         {
             return View();
