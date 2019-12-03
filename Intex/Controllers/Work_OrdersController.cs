@@ -14,13 +14,25 @@ namespace Intex.Controllers
     public class Work_OrdersController : Controller
     {
         private NorthwestLabsContext db = new NorthwestLabsContext();
-
+        public List<Work_Orders> lstWork_Orders= new List<Work_Orders>();
         // GET: Work_Orders
         public ActionResult Index()
         {
+
             Customers cust = db.Customers.FirstOrDefault(p => p.Email == User.Identity.Name);
-    
-            return View(db.Work_Orders.ToList());
+            if (cust != null)
+            {
+                lstWork_Orders = db.Work_Orders
+               .Where(o => o.Customer_ID == cust.Customer_ID)
+               .ToList();
+
+                return View(lstWork_Orders);
+            }
+            else
+            {
+                return View();
+            }
+           
         }
 
         // GET: Work_Orders/Details/5

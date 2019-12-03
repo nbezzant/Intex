@@ -37,6 +37,7 @@ namespace Intex.Controllers
             }
             else
             {
+                ViewBag.Error = "Incorrect username or password. Please try again.";
                 return View();
             }
         }
