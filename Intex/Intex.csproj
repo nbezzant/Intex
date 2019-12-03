@@ -116,6 +116,18 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Assays.cs" />
+    <Compile Include="Models\Assay_Tests.cs" />
+    <Compile Include="Models\Compound_Receipts.cs" />
+    <Compile Include="Models\Customers.cs" />
+    <Compile Include="Models\Customer_Payment.cs" />
+    <Compile Include="Models\Materials.cs" />
+    <Compile Include="Models\Status.cs" />
+    <Compile Include="Models\Tests.cs" />
+    <Compile Include="Models\Test_Materials.cs" />
+    <Compile Include="Models\User_Roles.cs" />
+    <Compile Include="Models\Work_Orders.cs" />
+    <Compile Include="Models\Work_Order_Assays.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -138,7 +150,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
