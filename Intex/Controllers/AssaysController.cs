@@ -37,8 +37,10 @@ namespace Intex.Controllers
             db.SaveChanges();
             return RedirectToAction("Index", new { id = workOrderId });
         }
-        public ActionResult SeeAssayOnTest()
+        public ActionResult SeeAssayOnTest(int id)
         {
+            workOrderId = id;
+            ViewBag.ID = id;
             IEnumerable<Assays> assays =
             db.Database.SqlQuery<Assays>("SELECT *" +
                                         "FROM Assays, Work_Order_Assays, Work_Orders " +
