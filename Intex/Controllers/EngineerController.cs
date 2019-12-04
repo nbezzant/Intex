@@ -20,6 +20,10 @@ namespace Intex.Controllers
         {
             return View();
         }
+        public ActionResult listAssays()
+        {
+            return View(db.Work_Order_Assays.ToList());
+        }
         //inside here will be materials edits and stuff.
         public ActionResult EditWork_Orders(int? id)
         {

@@ -32,7 +32,7 @@ namespace Intex.Controllers
             Work_Order_Assays theTest = new Work_Order_Assays();
             theTest.Work_Order_ID = workOrderId;
             theTest.Assay_ID = assays.Assay_ID;
-            theTest.Assay_Cost = -5;
+            theTest.Assay_Cost = assays.Base_Price + assays.Employee_Cost;
             db.Work_Order_Assays.Add(theTest);
             db.SaveChanges();
             return RedirectToAction("Index", new { id = workOrderId });
@@ -77,7 +77,7 @@ namespace Intex.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Assay_ID,Assay_Desc,Assay_Duration")] Assays assays)
+        public ActionResult Create([Bind(Include = "Assay_ID,Assay_Abbreviation,Assay_Desc,Assay_Duration,Employee_Cost,Base_Price,Assay_Results")] Assays assays)
         {
             if (ModelState.IsValid)
             {
@@ -110,7 +110,7 @@ namespace Intex.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Assay_ID,Assay_Desc,Assay_Duration,Employee_Cost")] Assays assays)
+        public ActionResult Edit([Bind(Include = "Assay_ID,Assay_Abbreviation,Assay_Desc,Assay_Duration,Employee_Cost,Base_Price,Assay_Results")] Assays assays)
         {
             if (ModelState.IsValid)
             {

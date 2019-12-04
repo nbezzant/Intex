@@ -130,15 +130,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Assays.cs" />
-    <Compile Include="Models\Assay_Tests.cs" />
     <Compile Include="Models\Compound_Receipts.cs" />
     <Compile Include="Models\Customers.cs" />
     <Compile Include="Models\Customer_Payment.cs" />
     <Compile Include="Models\EmailFormModel.cs" />
     <Compile Include="Models\Materials.cs" />
     <Compile Include="Models\Status.cs" />
-    <Compile Include="Models\Tests.cs" />
-    <Compile Include="Models\Test_Materials.cs" />
+    <Compile Include="Models\Assay_Materials.cs" />
     <Compile Include="Models\User_Roles.cs" />
     <Compile Include="Models\Work_Orders.cs" />
     <Compile Include="Models\Work_Order_Assays.cs" />
@@ -200,6 +198,7 @@
     <Content Include="Views\Customer_Payment\Details.cshtml" />
     <Content Include="Views\Home\Unauthorized.cshtml" />
     <Content Include="Views\Engineer\EditWork_Orders.cshtml" />
+    <Content Include="Views\Engineer\listAssays.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
