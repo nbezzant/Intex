@@ -3,11 +3,14 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<center>
+    <h2>Welcome! Choose an option to view below:</h2>
+</center>
 
-
-<input type="button" class="btn btn-info btn" value="See Materials" onclick="location.href='@Url.Action("ListMaterials")'" />
-&nbsp | &nbsp
-<input type="button" class="btn btn-info btn" value="See Work Orders" onclick="location.href='@Url.Action("ListWork_Orders", "Compound_Receipts")'" />
-&nbsp | &nbsp
-<input type="button" class="btn btn-info btn" value="Create Work Order Compound Receipt" onclick="location.href='@Url.Action("Create", "Compound_Receipts")'" />
+<center>
+    <div class="jumbotron">
+        <input type="button" class="btn btn-info btn-lg" value="See Materials" onclick="location.href='@Url.Action("ListMaterials")'" />
+        <input type="button" class="btn btn-info btn-lg" value="See Work Orders" onclick="location.href='@Url.Action("ListWork_Orders", "Compound_Receipts")'" />
+        <input type="button" class="btn btn-info btn-lg" value="Create Compound Receipt" onclick="location.href='@Url.Action("Create", "Compound_Receipts")'" />
+    </div>
+</center>
