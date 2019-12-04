@@ -36,6 +36,9 @@
             @Html.DisplayNameFor(model => model.Password)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.Qualify_Discount)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.User_Role_ID)
         </th>
     </tr>
@@ -67,12 +70,15 @@
             @Html.DisplayFor(modelItem => item.Email)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.Qualify_Discount)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.User_Role_ID)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Customer_ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Customer_ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Customer_ID })
+            @Html.ActionLink("Edit", "Edit", new { id = item.Customer_ID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Customer_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Customer_ID })
         </td>
     </tr>
 }
