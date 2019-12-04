@@ -170,11 +170,6 @@
     <Content Include="Views\Engineer\DetailsMaterial.cshtml" />
     <Content Include="Views\Engineer\EditMaterial.cshtml" />
     <Content Include="Views\Engineer\ListMaterials.cshtml" />
-    <Content Include="Views\Compound_Receipts\Create.cshtml" />
-    <Content Include="Views\Compound_Receipts\Delete.cshtml" />
-    <Content Include="Views\Compound_Receipts\Details.cshtml" />
-    <Content Include="Views\Compound_Receipts\Edit.cshtml" />
-    <Content Include="Views\Compound_Receipts\Index.cshtml" />
     <Content Include="Views\Compound_Receipts\ListWork_Orders.cshtml" />
     <Content Include="Views\Assays\Create.cshtml" />
     <Content Include="Views\Assays\Delete.cshtml" />
@@ -189,6 +184,11 @@
     <Content Include="Views\AdminCustomers\Edit.cshtml" />
     <Content Include="Views\AdminCustomers\Index.cshtml" />
     <Content Include="Views\Assays\SeeAssayOnTest.cshtml" />
+    <Content Include="Views\Compound_Receipts\Create.cshtml" />
+    <Content Include="Views\Compound_Receipts\Delete.cshtml" />
+    <Content Include="Views\Compound_Receipts\Details.cshtml" />
+    <Content Include="Views\Compound_Receipts\Edit.cshtml" />
+    <Content Include="Views\Compound_Receipts\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -16,10 +16,6 @@ namespace Intex.Controllers
         private NorthwestLabsContext db = new NorthwestLabsContext();
 
         // GET: Compound_Receipts
-        public ActionResult ListWork_Orders()
-        {
-            return View(db.Work_Orders.ToList());
-        }
         public ActionResult Index()
         {
             return View(db.Compound_Receipts.ToList());
@@ -51,7 +47,7 @@ namespace Intex.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "LT,Compound_Sequence_Code,Compound_Name,Quantity,Date_Arrived,Received_By,Date_Due,Appearance,Indicated_Weight,Molecular_Mass,Actual_Weight,MTD,Confirmation_Date,Confirmation_Time,Work_Order_ID")] Compound_Receipts compound_Receipts)
+        public ActionResult Create([Bind(Include = "Compound_Receipt_ID,LT,Compound_Sequence_Code,Compound_Name,Quantity,Date_Arrived,Received_By,Date_Due,Appearance,Indicated_Weight,Molecular_Mass,Actual_Weight,MTD,Confirmation_Date,Confirmation_Time,Work_Order_ID")] Compound_Receipts compound_Receipts)
         {
             if (ModelState.IsValid)
             {
@@ -83,7 +79,7 @@ namespace Intex.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "LT,Compound_Sequence_Code,Compound_Name,Quantity,Date_Arrived,Received_By,Date_Due,Appearance,Indicated_Weight,Molecular_Mass,Actual_Weight,MTD,Confirmation_Date,Confirmation_Time,Work_Order_ID")] Compound_Receipts compound_Receipts)
+        public ActionResult Edit([Bind(Include = "Compound_Receipt_ID,LT,Compound_Sequence_Code,Compound_Name,Quantity,Date_Arrived,Received_By,Date_Due,Appearance,Indicated_Weight,Molecular_Mass,Actual_Weight,MTD,Confirmation_Date,Confirmation_Time,Work_Order_ID")] Compound_Receipts compound_Receipts)
         {
             if (ModelState.IsValid)
             {
