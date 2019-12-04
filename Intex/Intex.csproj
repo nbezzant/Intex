@@ -180,6 +180,7 @@
     <Content Include="Views\Assays\Edit.cshtml" />
     <Content Include="Views\Assays\Index.cshtml" />
     <Content Include="Views\Assays\add2Test.cshtml" />
+    <Content Include="Views\Assays\SeeAssayOnTest.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
