@@ -14,9 +14,23 @@
         <h4>Compound_Receipts</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.LT)
+        @Html.HiddenFor(model => model.Compound_Receipt_ID)
 
-        @Html.HiddenFor(model => model.Compound_Sequence_Code)
+        <div class="form-group">
+            @Html.LabelFor(model => model.LT, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.LT, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.LT, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Compound_Sequence_Code, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Compound_Sequence_Code, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Compound_Sequence_Code, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Compound_Name, htmlAttributes: new { @class = "control-label col-md-2" })

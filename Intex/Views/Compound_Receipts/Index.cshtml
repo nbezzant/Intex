@@ -12,6 +12,12 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.LT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Compound_Sequence_Code)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Compound_Name)
         </th>
         <th>
@@ -56,6 +62,12 @@
 @foreach (var item in Model) {
     <tr>
         <td>
+            @Html.DisplayFor(modelItem => item.LT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Compound_Sequence_Code)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.Compound_Name)
         </td>
         <td>
@@ -95,9 +107,9 @@
             @Html.DisplayFor(modelItem => item.Work_Order_ID)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Edit", "Edit", new { id=item.Compound_Receipt_ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Compound_Receipt_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Compound_Receipt_ID })
         </td>
     </tr>
 }
