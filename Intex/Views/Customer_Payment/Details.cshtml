@@ -1,0 +1,50 @@
+﻿@model Intex.Models.Customer_Payment
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Customer_Payment</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Card_Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Card_Type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Card_Num)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Card_Num)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Card_Expiration)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Card_Expiration)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Card_CVV)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Card_CVV)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Customer_Payment_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

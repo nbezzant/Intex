@@ -11,108 +11,107 @@ using Intex.Models;
 
 namespace Intex.Controllers
 {
-    [Authorize(Roles = "Engineer,Admin")]
-    public class Compound_ReceiptsController : Controller
+    public class Customer_PaymentController : Controller
     {
         private NorthwestLabsContext db = new NorthwestLabsContext();
 
-        // GET: Compound_Receipts
+        // GET: Customer_Payment
         public ActionResult Index()
         {
-            return View(db.Compound_Receipts.ToList());
+            return View(db.Customer_Payments.ToList());
         }
 
-        // GET: Compound_Receipts/Details/5
+        // GET: Customer_Payment/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Compound_Receipts compound_Receipts = db.Compound_Receipts.Find(id);
-            if (compound_Receipts == null)
+            Customer_Payment customer_Payment = db.Customer_Payments.Find(id);
+            if (customer_Payment == null)
             {
                 return HttpNotFound();
             }
-            return View(compound_Receipts);
+            return View(customer_Payment);
         }
 
-        // GET: Compound_Receipts/Create
+        // GET: Customer_Payment/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Compound_Receipts/Create
+        // POST: Customer_Payment/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Compound_Receipt_ID,LT,Compound_Sequence_Code,Compound_Name,Quantity,Date_Arrived,Received_By,Date_Due,Appearance,Indicated_Weight,Molecular_Mass,Actual_Weight,MTD,Confirmation_Date,Confirmation_Time,Work_Order_ID")] Compound_Receipts compound_Receipts)
+        public ActionResult Create([Bind(Include = "Customer_Payment_ID,Card_Type,Card_Num,Card_Expiration,Card_CVV")] Customer_Payment customer_Payment)
         {
             if (ModelState.IsValid)
             {
-                db.Compound_Receipts.Add(compound_Receipts);
+                db.Customer_Payments.Add(customer_Payment);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(compound_Receipts);
+            return View(customer_Payment);
         }
 
-        // GET: Compound_Receipts/Edit/5
+        // GET: Customer_Payment/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Compound_Receipts compound_Receipts = db.Compound_Receipts.Find(id);
-            if (compound_Receipts == null)
+            Customer_Payment customer_Payment = db.Customer_Payments.Find(id);
+            if (customer_Payment == null)
             {
                 return HttpNotFound();
             }
-            return View(compound_Receipts);
+            return View(customer_Payment);
         }
 
-        // POST: Compound_Receipts/Edit/5
+        // POST: Customer_Payment/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Compound_Receipt_ID,LT,Compound_Sequence_Code,Compound_Name,Quantity,Date_Arrived,Received_By,Date_Due,Appearance,Indicated_Weight,Molecular_Mass,Actual_Weight,MTD,Confirmation_Date,Confirmation_Time,Work_Order_ID")] Compound_Receipts compound_Receipts)
+        public ActionResult Edit([Bind(Include = "Customer_Payment_ID,Card_Type,Card_Num,Card_Expiration,Card_CVV")] Customer_Payment customer_Payment)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(compound_Receipts).State = EntityState.Modified;
+                db.Entry(customer_Payment).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(compound_Receipts);
+            return View(customer_Payment);
         }
 
-        // GET: Compound_Receipts/Delete/5
+        // GET: Customer_Payment/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Compound_Receipts compound_Receipts = db.Compound_Receipts.Find(id);
-            if (compound_Receipts == null)
+            Customer_Payment customer_Payment = db.Customer_Payments.Find(id);
+            if (customer_Payment == null)
             {
                 return HttpNotFound();
             }
-            return View(compound_Receipts);
+            return View(customer_Payment);
         }
 
-        // POST: Compound_Receipts/Delete/5
+        // POST: Customer_Payment/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Compound_Receipts compound_Receipts = db.Compound_Receipts.Find(id);
-            db.Compound_Receipts.Remove(compound_Receipts);
+            Customer_Payment customer_Payment = db.Customer_Payments.Find(id);
+            db.Customer_Payments.Remove(customer_Payment);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

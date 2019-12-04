@@ -4,12 +4,12 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Customer Profile Details</h2>
+<h2>Details</h2>
 
 <div>
+    <h4>Customers</h4>
     <hr />
     <dl class="dl-horizontal">
-
         <dt>
             @Html.DisplayNameFor(model => model.First_Name)
         </dt>
@@ -65,6 +65,7 @@
         <dd>
             @Html.DisplayFor(model => model.Email)
         </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.Qualify_Discount)
         </dt>
@@ -72,6 +73,7 @@
         <dd>
             @Html.DisplayFor(model => model.Qualify_Discount)
         </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.Password)
         </dt>
@@ -92,5 +94,5 @@
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Customer_ID }) |
-    @Html.ActionLink("Back to Customer Home", "Home")
+    @Html.ActionLink("Back to List", "Index")
 </p>

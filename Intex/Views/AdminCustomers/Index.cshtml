@@ -1,13 +1,12 @@
 ﻿@model IEnumerable<Intex.Models.Customers>
 
 @{
-    ViewBag.Title = "IndexAdmin?";
+    ViewBag.Title = "Index";
 }
 
-<h2>Customers</h2>
+<h2>Index</h2>
 
 <p>
-    <input type="button" class="btn btn-info btn-lg" value="Create New" onclick="location.href='@Url.Action("Create")'" />
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
@@ -34,21 +33,19 @@
             @Html.DisplayNameFor(model => model.Email)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Password)
+            @Html.DisplayNameFor(model => model.Qualify_Discount)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Qualify_Discount)
+            @Html.DisplayNameFor(model => model.Password)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.User_Role_ID)
         </th>
+        <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Password)
-        </td>
         <td>
             @Html.DisplayFor(modelItem => item.First_Name)
         </td>
@@ -74,12 +71,15 @@
             @Html.DisplayFor(modelItem => item.Qualify_Discount)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.Password)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.User_Role_ID)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", "AdminCustomers", new { id = item.Customer_ID }, null) |
-            @Html.ActionLink("Details", "Details", "AdminCustomers", new { id = item.Customer_ID }, null) |
-            @Html.ActionLink("Delete", "Delete", "AdminCustomers", new { id = item.Customer_ID }, null)
+            @Html.ActionLink("Edit", "Edit", new { id=item.Customer_ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Customer_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Customer_ID })
         </td>
     </tr>
 }

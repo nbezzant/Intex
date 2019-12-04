@@ -11,6 +11,7 @@ using System.Data.Entity;
 
 namespace Intex.Controllers
 {
+    [Authorize(Roles ="Engineer,Admin")]
     public class EngineerController : Controller
     {
         private NorthwestLabsContext db = new NorthwestLabsContext();

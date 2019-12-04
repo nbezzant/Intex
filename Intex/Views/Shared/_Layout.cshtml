@@ -23,7 +23,7 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Engineer", "Index", "Engineer")</li>
                     <li>@Html.ActionLink("Customer", "Home", "Customers")</li>
-                    <li>@Html.ActionLink("Admin", "Home", "Admin")</li>
+                    <li>@Html.ActionLink("Admin", "Index", "Admin")</li>
                 </ul>
                 <!--<li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -51,6 +51,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="@Url.Action("Create", "Customers")"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
                 <li><a href="@Url.Action("Login", "Home")"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                <li><a href="@Url.Action("LogOut", "Home")"><span class="glyphicon glyphicon-log-out"></span> LogOut</a></li>
             </ul>
 
         </div>
