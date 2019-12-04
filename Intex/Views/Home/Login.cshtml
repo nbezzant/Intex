@@ -7,15 +7,16 @@
 @using (Html.BeginForm("Login", "Home", FormMethod.Post))
 {
     <label for="inputEmail">Email address</label>
-    @Html.TextBox("Email address")
+    @Html.TextBox("Email address",null,new { @class = "form-control"})
     <br />
     <label for="inputPassword">Password</label>
-    @Html.Password("Password")
+    @Html.Password("Password",null,new { @class = "form-control" })
     <br />
     <div style="color:red;">
         @Html.Raw(ViewBag.Error)
     </div>
-    <button type="submit">Login</button>
+    <button type="submit" class="btn">Login</button> 
+    <br />
     <br />
     @Html.ActionLink("Create Customer Account","Create","Customers")
 }
