@@ -14,10 +14,10 @@
         <input type="button" class="btn btn-info btn-lg" value="See Materials" onclick="location.href='@Url.Action("ListMaterials")'" />
         <input type="button" class="btn btn-info btn-lg" value="See Work Orders" onclick="location.href='@Url.Action("ListWork_Orders", "Compound_Receipts")'" />
         <input type="button" class="btn btn-info btn-lg" value="Create Compound Receipt" onclick="location.href='@Url.Action("Create", "Compound_Receipts")'" />
+        <input type="button" class="btn btn-info btn-lg" value="See All Compound Receipts" onclick="location.href='@Url.Action("Index", "Compound_Receipts")'" />
+        <br />
+        <input type="button" class="btn btn-info btn-lg" value="See Scheduled Requested Assays" onclick="location.href='@Url.Action("listAssays", "Engineer")'" />
+        <input type="button" class="btn btn-info btn-lg" value="See/Edit Assays" onclick="location.href='@Url.Action("Index", "AssaysAdmin")'" />
     </div>
 </center>
-@Html.ActionLink("See All compound receipts", "Index", "Compound_Receipts")
-<br />
-@Html.ActionLink("See scheuled Requested Assays", "listAssays", "Engineer")
-<br />
-@Html.ActionLink("see/edit assays", "Index", "AssaysAdmin")
+
