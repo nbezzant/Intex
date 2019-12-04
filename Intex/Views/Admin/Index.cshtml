@@ -4,11 +4,11 @@
 }
 
 <h2>Index</h2>
-@Html.ActionLink("See all Customers","Index","Customers")
-<br />
-@Html.ActionLink("See All Orders", "ListWork_Orders", "Compound_Receipts")
-<br />
-@Html.ActionLink("See All Materials","ListMaterials","Engineer")
-<br />
-@Html.ActionLink("See all Compound Orders","Index", "Compound_Receipts")
 
+<input type="button" class="btn btn-info btn" value="See All Customers" onclick="location.href='@Url.Action("Index", "Customers")'" />
+&nbsp | &nbsp
+<input type="button" class="btn btn-info btn" value="See All Orders" onclick="location.href='@Url.Action("ListWork_Orders", "Compound_Receipts")'" />
+&nbsp | &nbsp
+<input type="button" class="btn btn-info btn" value="See All Materials" onclick="location.href='@Url.Action("ListMaterials", "Engineer")'" />
+&nbsp | &nbsp
+<input type="button" class="btn btn-info btn" value="See All Compound Orders" onclick="location.href='@Url.Action("Index", "Compound_Receipts")'" />

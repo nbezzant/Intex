@@ -7,6 +7,13 @@
 
 @Html.ActionLink("See Materials", "ListMaterials")
 <br />
-@Html.ActionLink("See Work Orders", "ListWork_Orders","Compound_receipts")
+@Html.ActionLink("See Work Orders", "ListWork_Orders", "Compound_receipts")
 <br />
-@Html.ActionLink("Create Work Order Compound Receipt","Create","Compound_Receipts")
+@Html.ActionLink("Create Work Order Compound Receipt", "Create", "Compound_Receipts")
+
+
+<input type="button" class="btn btn-info btn" value="See Materials" onclick="location.href='@Url.Action("ListMaterials")'" />
+&nbsp | &nbsp
+<input type="button" class="btn btn-info btn" value="See Work Orders" onclick="location.href='@Url.Action("ListWork_Orders", "Compound_Receipts")'" />
+&nbsp | &nbsp
+<input type="button" class="btn btn-info btn" value="Create Work Order Compound Receipt" onclick="location.href='@Url.Action("Create", "Compound_Receipts")'" />
