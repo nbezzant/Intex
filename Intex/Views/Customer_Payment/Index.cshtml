@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Intex.Models.Customer_Payment>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Card_Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Card_Num)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Card_Expiration)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Card_CVV)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Card_Type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Card_Num)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Card_Expiration)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Card_CVV)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Customer_Payment_ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Customer_Payment_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Customer_Payment_ID })
+        </td>
+    </tr>
+}
+
+</table>

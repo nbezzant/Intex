@@ -118,6 +118,7 @@
     <Compile Include="Controllers\Compound_ReceiptsController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
+    <Compile Include="Controllers\Customer_PaymentController.cs" />
     <Compile Include="Controllers\EngineerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Models\UsersRoleProvider.cs" />
@@ -185,6 +186,11 @@
     <Content Include="Views\AdminCustomers\Edit.cshtml" />
     <Content Include="Views\AdminCustomers\Index.cshtml" />
     <Content Include="Views\Assays\SeeAssayOnTest.cshtml" />
+    <Content Include="Views\Customer_Payment\Create.cshtml" />
+    <Content Include="Views\Customer_Payment\Delete.cshtml" />
+    <Content Include="Views\Customer_Payment\Details.cshtml" />
+    <Content Include="Views\Customer_Payment\Edit.cshtml" />
+    <Content Include="Views\Customer_Payment\Index.cshtml" />
     <Content Include="Views\Compound_Receipts\Create.cshtml" />
     <Content Include="Views\Compound_Receipts\Delete.cshtml" />
     <Content Include="Views\Compound_Receipts\Details.cshtml" />
