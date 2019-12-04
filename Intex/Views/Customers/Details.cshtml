@@ -92,5 +92,6 @@
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Customer_ID }) |
+    @Html.ActionLink("View Payment Information", "Details", "Customer_Payment", new { id = Model.Customer_ID }, null) |
     @Html.ActionLink("Back to Customer Home", "Home")
 </p>

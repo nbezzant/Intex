@@ -186,15 +186,13 @@
     <Content Include="Views\AdminCustomers\Index.cshtml" />
     <Content Include="Views\Assays\SeeAssayOnTest.cshtml" />
     <Content Include="Views\Customer_Payment\Create.cshtml" />
-    <Content Include="Views\Customer_Payment\Delete.cshtml" />
-    <Content Include="Views\Customer_Payment\Details.cshtml" />
-    <Content Include="Views\Customer_Payment\Edit.cshtml" />
-    <Content Include="Views\Customer_Payment\Index.cshtml" />
     <Content Include="Views\Compound_Receipts\Create.cshtml" />
     <Content Include="Views\Compound_Receipts\Delete.cshtml" />
     <Content Include="Views\Compound_Receipts\Details.cshtml" />
     <Content Include="Views\Compound_Receipts\Edit.cshtml" />
     <Content Include="Views\Compound_Receipts\Index.cshtml" />
+    <Content Include="Views\Customer_Payment\Edit.cshtml" />
+    <Content Include="Views\Customer_Payment\Details.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
