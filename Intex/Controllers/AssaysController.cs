@@ -27,15 +27,25 @@ namespace Intex.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult add2Test(Assays assay)
+        public ActionResult add2Test(Assays assay,string actionType)
         {
-            Work_Order_Assays theTest = new Work_Order_Assays();
-            theTest.Work_Order_ID = workOrderId;
-            theTest.Assay_ID = assay.Assay_ID;
-            theTest.Assay_Cost = -5;
-            db.Work_Order_Assays.Add(theTest);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            if (actionType == "Yes")
+            {
+                Work_Order_Assays theTest = new Work_Order_Assays();
+                theTest.Work_Order_ID = workOrderId;
+                theTest.Assay_ID = assay.Assay_ID;
+                theTest.Assay_Cost = -5;
+                db.Work_Order_Assays.Add(theTest);
+                db.SaveChanges();
+                return RedirectToAction("Index", new { id = workOrderId });
+            }
+
+            return RedirectToAction("Index", new { id = workOrderId });
+        }
+        public ActionResult SeeAssayOnTest()
+        {
+            //need to create a sql statement that takes it out with the id of workorder id
+            return View();
         }
         // GET: Assays/Details/5
         public ActionResult Details(int? id)
