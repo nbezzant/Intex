@@ -18,6 +18,6 @@ namespace Intex.Models
         [Display(Name = "Assay Duration")]
         public int Assay_Duration { get; set; }
         [Display(Name = "Employee Cost")]
-        public float Employee_Cost { get; set; }
+        public double Employee_Cost { get; set; }
     }
 }
