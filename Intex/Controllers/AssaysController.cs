@@ -14,32 +14,24 @@ namespace Intex.Controllers
     public class AssaysController : Controller
     {
         private NorthwestLabsContext db = new NorthwestLabsContext();
-        public int workOrderId = -5;
+        public static int workOrderId = -5;
         // GET: Assays
         public ActionResult Index(int id)
         {
             workOrderId = id;
-            return View(db.Assays.ToList());
+            return View(db.Assays.ToList());  
         }
 
-        public ActionResult add2Test()
+        public ActionResult add2Test(int? id)
         {
-            return View();
-        }
-        [HttpPost]
-        public ActionResult add2Test(Assays assay,string actionType)
-        {
-            if (actionType == "Yes")
-            {
-                Work_Order_Assays theTest = new Work_Order_Assays();
-                theTest.Work_Order_ID = workOrderId;
-                theTest.Assay_ID = assay.Assay_ID;
-                theTest.Assay_Cost = -5;
-                db.Work_Order_Assays.Add(theTest);
-                db.SaveChanges();
-                return RedirectToAction("Index", new { id = workOrderId });
-            }
-
+            ViewBag.ID = id;
+            Assays assays = db.Assays.Find(id);
+            Work_Order_Assays theTest = new Work_Order_Assays();
+            theTest.Work_Order_ID = workOrderId;
+            theTest.Assay_ID = assays.Assay_ID;
+            theTest.Assay_Cost = -5;
+            db.Work_Order_Assays.Add(theTest);
+            db.SaveChanges();
             return RedirectToAction("Index", new { id = workOrderId });
         }
         public ActionResult SeeAssayOnTest()
@@ -80,10 +72,10 @@ namespace Intex.Controllers
                 assays.Employee_Cost = 40;
                 db.Assays.Add(assays);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { id = workOrderId });
             }
 
-            return View(assays);
+            return RedirectToAction("Index", new { id = workOrderId });
         }
 
         // GET: Assays/Edit/5

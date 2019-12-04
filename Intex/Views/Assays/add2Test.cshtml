@@ -5,16 +5,14 @@
 }
 
 <h2>add2Test</h2>
-@using (Html.BeginForm())
+
+@using (@Html.BeginForm("add2Test", "Assays", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-
     <h5>Are you sure you want to add the following Assay to your work order?</h5>
-    //figure out how to print out the assay name here
-    <div class="form-group">
-        <div >
-            <input type="submit" value="Yes" class="cancel" name="actionType" />
-            <input type="submit" value="No" class="cancel" name="actionType" />
-        </div>
-    </div>
+    @Html.DisplayFor(model=>model.Assay_Desc)
+
+    @Html.ActionLink("Yes", "Index","Assays",new { id = ViewBag.ID})
+
 }
+
