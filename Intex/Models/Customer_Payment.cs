@@ -15,7 +15,7 @@ namespace Intex.Models
         [Required]
         public int Customer_Payment_ID { get; set; }
         [Required]
-        [Display(Name = "Card Type (debit or credit)")]
+        [Display(Name = "Card Type")]
         public string Card_Type { get; set; } //Need to add this as a type maybe so it can be a drop down list
         [Display(Name = "Card Number")]
         [Required]

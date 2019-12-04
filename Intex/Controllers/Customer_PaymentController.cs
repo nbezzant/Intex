@@ -14,8 +14,12 @@ namespace Intex.Controllers
     public class Customer_PaymentController : Controller
     {
         private NorthwestLabsContext db = new NorthwestLabsContext();
+        public static List<string> lstCardTypes = new List<string>()
+        {
+            "Credit",
+            "Debit"
+        };
         
-
 
         // GET: Customer_Payment/Details/5
         public ActionResult Details(int? id)
@@ -35,6 +39,7 @@ namespace Intex.Controllers
         // GET: Customer_Payment/Create
         public ActionResult Create()
         {
+            ViewBag.CardType = lstCardTypes;
             return View();
         }
 
@@ -49,7 +54,7 @@ namespace Intex.Controllers
             {
                 db.Customer_Payments.Add(customer_Payment);
                 db.SaveChanges();
-                return RedirectToAction("Home", "Customer", new { area = ""});
+                return RedirectToAction("Home", "Customers", new { area = ""});
             }
 
             return View(customer_Payment);
@@ -58,6 +63,7 @@ namespace Intex.Controllers
         // GET: Customer_Payment/Edit/5
         public ActionResult Edit(int? id)
         {
+            ViewBag.CardType = lstCardTypes;
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
