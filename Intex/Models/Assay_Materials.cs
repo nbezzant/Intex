@@ -7,19 +7,19 @@ using System.Web;
 
 namespace Intex.Models
 {
-    [Table("Test_Materials")]
-    public class Test_Materials
+    [Table("Assay_Materials")]
+    public class Assay_Materials
     {
         [Key]
-        [Display(Name ="Test Material ID")]
-        public int Test_Material_ID { get; set; }
-        [Display(Name = "Test ID")]
-        public int Test_ID { get; set; }
+        [Display(Name ="Assay Material ID")]
+        public int Assay_Material_ID { get; set; }
+        [Display(Name = "Assay ID")]
+        public int Assay_ID { get; set; }
         [Display(Name = "Material ID")]
         public int Material_ID { get; set; }
         [Display(Name = "Material Amount")]
-        public int Amount { get; set; }
+        public double Amount { get; set; }
         [Display(Name = "Material Cost")]
-        public float Material_Cost { get; set; }
+        public double Material_Cost { get; set; }
     }
 }

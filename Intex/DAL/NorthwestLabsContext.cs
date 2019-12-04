@@ -25,7 +25,7 @@ namespace Intex.DAL
         public DbSet<Assay_Tests> Assay_Tests { get; set; }
         public DbSet<Compound_Receipts> Compound_Receipts { get; set; }
         public DbSet<Tests> Tests { get; set; }
-        public DbSet<Test_Materials> Test_Materials { get; set; }
+        public DbSet<Assay_Materials> Test_Materials { get; set; }
         public DbSet<Materials> Materials { get; set; }
 
     }
