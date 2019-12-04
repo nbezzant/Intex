@@ -8,13 +8,7 @@
 </center>
 
 
-<input type="button" class="btn btn-info btn" value="See Materials" onclick="location.href='@Url.Action("ListMaterials")'" />
-&nbsp | &nbsp
-<input type="button" class="btn btn-info btn" value="See Work Orders" onclick="location.href='@Url.Action("ListWork_Orders", "Compound_Receipts")'" />
-&nbsp | &nbsp
-<input type="button" class="btn btn-info btn" value="Create Work Order Compound Receipt" onclick="location.href='@Url.Action("Create", "Compound_Receipts")'" />
-<br />
-@Html.ActionLink("See All Requested Assays","listAssays","Engineer")
+
 <center>
     <div class="jumbotron">
         <input type="button" class="btn btn-info btn-lg" value="See Materials" onclick="location.href='@Url.Action("ListMaterials")'" />
@@ -22,6 +16,8 @@
         <input type="button" class="btn btn-info btn-lg" value="Create Compound Receipt" onclick="location.href='@Url.Action("Create", "Compound_Receipts")'" />
     </div>
 </center>
-@Html.ActionLink("See All Requested Assays", "listAssays", "Engineer")
+@Html.ActionLink("See All compound receipts", "Index", "Compound_Receipts")
+<br />
+@Html.ActionLink("See scheuled Requested Assays", "listAssays", "Engineer")
 <br />
 @Html.ActionLink("see/edit assays", "Index", "AssaysAdmin")

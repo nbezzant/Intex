@@ -22,10 +22,11 @@ namespace Intex.Models
 
         [Display(Name = "Instructions")]
         public string Instructions { get; set; }
-        [Display(Name ="Run Conditional Tests")]
-        public bool Conditional_Tests { get; set; }
+       
         [Display(Name = "Rush")]
         public bool Rush { get; set; }
+        [Display(Name = "Run Conditional Tests")]
+        public bool Conditional_Tests { get; set; }
 
         [Display(Name = "Quoted Price")]
         public double Price_Quote { get; set; }

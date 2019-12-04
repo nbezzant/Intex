@@ -16,8 +16,8 @@ namespace Intex.Controllers
     public class Work_OrdersController : Controller
     {
         private NorthwestLabsContext db = new NorthwestLabsContext();
-        public List<Work_Orders> lstWork_Orders= new List<Work_Orders>();
-        public List<Status> lstStatuses = new List<Status>();
+        public static List<Work_Orders> lstWork_Orders= new List<Work_Orders>();
+        public static List<Status> lstStatuses = new List<Status>();
         // GET: Work_Orders
         public ActionResult Index()
         {
@@ -150,13 +150,15 @@ namespace Intex.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Work_Order_ID,Status_ID,Customer_ID,Instructions,Rush,Price_Quote,Discount,Total_Cost")] Work_Orders work_Orders)
+        public ActionResult Edit([Bind(Include = "Work_Order_ID,Status_ID,Customer_ID,Instructions,Rush,Conditional_Tests,Price_Quote,Discount,Total_Cost")] Work_Orders work_Orders)
         {
+            work_Orders.Status_ID = 1; //reset status after changes
+            work_Orders.Customer_ID = db.Customers.FirstOrDefault(p => p.Email == User.Identity.Name).Customer_ID;
             if (ModelState.IsValid)
             {
                 db.Entry(work_Orders).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Work_Orders");
             }
             return View(work_Orders);
         }

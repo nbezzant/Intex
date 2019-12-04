@@ -98,6 +98,7 @@ namespace Intex.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.id = id;
             return View(customers);
         }
 
@@ -107,13 +108,14 @@ namespace Intex.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Customer,Engineer,Admin")]
-        public ActionResult Edit([Bind(Include = "Customer_ID,Username,Password,First_Name,Last_Name,Street_Address,City,State,Phone,Email,User_Role_ID")] Customers customers)
+        public ActionResult Edit([Bind(Include = "Customer_ID,Email,Password,First_Name,Last_Name,Street_Address,City,State,Phone,Qualify_Discount,User_Role_ID,Customer_Payment_ID")] Customers customers)
         {
             if (ModelState.IsValid)
             {
+
                 db.Entry(customers).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details");
             }
             return View(customers);
         }

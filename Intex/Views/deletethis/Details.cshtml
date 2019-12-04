@@ -1,0 +1,82 @@
+﻿@model Intex.Models.Work_Orders
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Work_Orders</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Status_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Instructions)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Instructions)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Rush)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rush)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Conditional_Tests)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Conditional_Tests)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price_Quote)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price_Quote)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Discount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Discount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Total_Cost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Total_Cost)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Work_Order_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

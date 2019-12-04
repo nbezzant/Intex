@@ -44,6 +44,9 @@ namespace Intex.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult EditWork_Orders([Bind(Include = "Work_Order_ID,Status_ID,Customer_ID,Instructions,Rush,Price_Quote,Discount,Total_Cost")] Work_Orders work_Orders)
         {
+            work_Orders.Status_ID = 1; //reset status after changes
+            work_Orders.Customer_ID = db.Work_Orders.Find(work_Orders.Work_Order_ID).Customer_ID;
+
             if (ModelState.IsValid)
             {
                 db.Entry(work_Orders).State = EntityState.Modified;
