@@ -112,6 +112,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\AdminCustomersController.cs" />
     <Compile Include="Controllers\AssaysController.cs" />
     <Compile Include="Controllers\Compound_ReceiptsController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
@@ -180,6 +182,12 @@
     <Content Include="Views\Assays\Edit.cshtml" />
     <Content Include="Views\Assays\Index.cshtml" />
     <Content Include="Views\Assays\add2Test.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\AdminCustomers\Create.cshtml" />
+    <Content Include="Views\AdminCustomers\Delete.cshtml" />
+    <Content Include="Views\AdminCustomers\Details.cshtml" />
+    <Content Include="Views\AdminCustomers\Edit.cshtml" />
+    <Content Include="Views\AdminCustomers\Index.cshtml" />
     <Content Include="Views\Assays\SeeAssayOnTest.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
