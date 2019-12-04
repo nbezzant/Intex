@@ -36,8 +36,13 @@ namespace Intex.Controllers
         }
         public ActionResult SeeAssayOnTest()
         {
+            Work_Order_Assays myWork_Order_Assays = db.Work_Order_Assays.FirstOrDefault(o => o.Work_Order_ID == workOrderId);
+            lstAssays = db.Assays
+                .Where(o => o.Assay_ID == myWork_Order_Assays.Assay_ID)
+                .ToList();
+
             //need to create a sql statement that takes it out with the id of workorder id
-            return View();
+            return View(lstAssays);
         }
         // GET: Assays/Details/5
         public ActionResult Details(int? id)
