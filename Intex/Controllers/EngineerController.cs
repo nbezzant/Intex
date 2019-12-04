@@ -21,7 +21,33 @@ namespace Intex.Controllers
             return View();
         }
         //inside here will be materials edits and stuff.
-
+        public ActionResult EditWork_Orders(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Work_Orders work_Orders = db.Work_Orders.Find(id);
+            ViewBag.Rush = work_Orders.Rush;
+            ViewBag.Discount = work_Orders.Discount;
+            if (work_Orders == null)
+            {
+                return HttpNotFound();
+            }
+            return View(work_Orders);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditWork_Orders([Bind(Include = "Work_Order_ID,Status_ID,Customer_ID,Instructions,Rush,Price_Quote,Discount,Total_Cost")] Work_Orders work_Orders)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(work_Orders).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(work_Orders);
+        }
         // GET: Materials
         public ActionResult ListMaterials()
         {

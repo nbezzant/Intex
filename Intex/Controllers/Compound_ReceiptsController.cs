@@ -23,7 +23,12 @@ namespace Intex.Controllers
             return View(db.Compound_Receipts.ToList());
         }
 
+        public ActionResult ListWork_Orders()
+        {
+            return View(db.Work_Orders.ToList());
+        }
         // GET: Compound_Receipts/Details/5
+
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -49,41 +54,55 @@ namespace Intex.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Compound_Receipt_ID,LT,Compound_Sequence_Code,Compound_Name,Quantity,Date_Arrived,Received_By,Date_Due,Appearance,Indicated_Weight,Molecular_Mass,Actual_Weight,MTD,Confirmation_Date,Confirmation_Time,Work_Order_ID")] Compound_Receipts compound_Receipts)
+        public ActionResult Create([Bind(Include = "LT,Compound_Sequence_Code,Compound_Name,Quantity,Date_Arrived,Received_By,Date_Due,Appearance,Indicated_Weight,Molecular_Mass,Actual_Weight,MTD,Confirmation_Date,Confirmation_Time,Work_Order_ID")] Compound_Receipts compound_Receipts)
         {
             if (ModelState.IsValid)
             {
-                 if (compound_Receipts.Date_Arrived != null)
-                 {
-                    Customers cust = db.Customers.FirstOrDefault(p => p.Email == User.Identity.Name);
-                    var senderEmail = new MailAddress("rankIS403@gmail.com", "werenumber1");
-                    var receiverEmail = new MailAddress(cust.Email, "Receiver");
-                    var password = "werenumber1";
-                    var body = "Your Order has been received in Singapore on date: "+compound_Receipts.Date_Arrived+". We will begin working on the tests as soon as possible.";
-                    var smtp = new SmtpClient
+                db.Compound_Receipts.Add(compound_Receipts);
+                db.SaveChanges();
+                if (db.Work_Orders.Find(compound_Receipts.Work_Order_ID) != null)
+                {
+                    if (compound_Receipts.Date_Arrived != null)
                     {
-                        Host = "smtp.gmail.com",
-                        Port = 587,
-                        EnableSsl = true,
-                        DeliveryMethod = SmtpDeliveryMethod.Network,
-                        UseDefaultCredentials = false,
-                        Credentials = new NetworkCredential(senderEmail.Address, password)
-                    };
-                    using (var mess = new MailMessage(senderEmail, receiverEmail)
-                    {
-                        Subject = "From Northwest Labs Singapore",
-                        Body = "Our email if you have any questions: " + senderEmail.Address + "\n" + "Message: " + body
-                    })
-                    {
-                        smtp.Send(mess);
+                        IEnumerable<Customers> receipt =
+             db.Database.SqlQuery<Customers>("select distinct Customers.Customer_ID, customers.First_Name, Customers.Last_Name, customers.Street_Address, Customers.City, customers.State, Customers.Phone, Customers.Email, customers.Qualify_Discount, Customers.Password, customers.User_Role_ID " +
+                                         "FROM Customers " +
+                                         "inner join Work_Orders on " +
+                                         "Work_Orders.Customer_ID = Customers.Customer_ID " +
+                                         "inner join Compound_Receipts on " +
+                                         "Work_Orders.Work_Order_ID = Compound_Receipts.Work_Order_ID " +
+                                         "where Work_Orders.Work_Order_ID = " + compound_Receipts.Work_Order_ID);
+                        Customers cust = db.Customers.FirstOrDefault(p => p.Email == User.Identity.Name);
+                        List<Customers> listReceipt = receipt.ToList();
+                        Customers firstReceipt = listReceipt.First();
+                        var senderEmail = new MailAddress("rankIS403@gmail.com", "Northwest Labs");
+                        var receiverEmail = new MailAddress(firstReceipt.Email, "Receiver");
+                        var password = "werenumber1";
+                        var body = "Your Order has been received in Singapore on date: " + compound_Receipts.Date_Arrived + ". We will begin working on the tests as soon as possible.";
+                        var smtp = new SmtpClient
+                        {
+                            Host = "smtp.gmail.com",
+                            Port = 587,
+                            EnableSsl = true,
+                            DeliveryMethod = SmtpDeliveryMethod.Network,
+                            UseDefaultCredentials = false,
+                            Credentials = new NetworkCredential(senderEmail.Address, password)
+                        };
+                        using (var mess = new MailMessage(senderEmail, receiverEmail)
+                        {
+                            Subject = "From Northwest Labs Singapore",
+                            Body = "Our email if you have any questions: " + senderEmail.Address + "\n" + "Message: " + body
+                        })
+                        {
+                            smtp.Send(mess);
+                        }
                     }
                 }
           
-                db.Compound_Receipts.Add(compound_Receipts);
-                db.SaveChanges();
+                
                 return RedirectToAction("Index");
             }
-
+            ViewBag.error = "ERROR: Make sure your work order id is correct.";
             return View(compound_Receipts);
         }
 

@@ -33,6 +33,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Total_Cost)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Work_Order_ID)
+        </th>
         <th></th>
     </tr>
 
@@ -63,7 +66,13 @@
             @Html.DisplayFor(modelItem => item.Total_Cost)
         </td>
         <td>
-            <input type="button" class="btn btn-info btn" value="Details" onclick="location.href='@Url.Action("Details", new { id = item.Work_Order_ID })'" />
+            @Html.DisplayFor(modelItem => item.Work_Order_ID)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditWork_Orders","Engineer", new { id = item.Work_Order_ID },null)
+        </td>
+        <td>
+            @Html.ActionLink("Details", "Details","Work_Orders", new { id = item.Work_Order_ID }, null)
         </td>
     </tr>
 }

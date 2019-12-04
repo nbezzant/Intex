@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 using Intex.DAL;
@@ -80,6 +81,7 @@ namespace Intex.Controllers
             if (ModelState.IsValid)
             {
                 Customers cust = db.Customers.FirstOrDefault(p => p.Email == User.Identity.Name);// get customer
+
                 if(work_Orders.Instructions == null)
                 {
                     work_Orders.Instructions = "";
@@ -92,8 +94,34 @@ namespace Intex.Controllers
 
                 db.Work_Orders.Add(work_Orders);
                 db.SaveChanges();
-                // this will then take you to which assays you want to add.
-                return RedirectToAction("Index","Assays", new {id = work_Orders.Work_Order_ID });
+
+                //send confirmation of work order via email
+
+                var senderEmail = new MailAddress("rankIS403@gmail.com", "NorthWest Labs");
+                var receiverEmail = new MailAddress(cust.Email, "Receiver");
+                var password = "werenumber1";
+                var body = "Thank you for submitting your work order! Please attach the following ID to the solution you send: " + work_Orders.Work_Order_ID + ". " + 
+                            "You will receive a confirmation when your compound has been received. A price quote will be included.";
+                var smtp = new SmtpClient
+                {
+                    Host = "smtp.gmail.com",
+                    Port = 587,
+                    EnableSsl = true,
+                    DeliveryMethod = SmtpDeliveryMethod.Network,
+                    UseDefaultCredentials = false,
+                    Credentials = new NetworkCredential(senderEmail.Address, password)
+                };
+                using (var mess = new MailMessage(senderEmail, receiverEmail)
+                {
+                    Subject = "From Northwest Labs Singapore",
+                    Body = body + "\n\n" + "Our email if you have any questions: " + senderEmail.Address + "\n"
+                }) 
+                {
+                    smtp.Send(mess);
+                }
+            
+            // this will then take you to which assays you want to add.
+            return RedirectToAction("Index","Assays", new {id = work_Orders.Work_Order_ID });
             }
 
             return View(work_Orders);

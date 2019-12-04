@@ -199,6 +199,7 @@
     <Content Include="Views\Customer_Payment\Edit.cshtml" />
     <Content Include="Views\Customer_Payment\Details.cshtml" />
     <Content Include="Views\Home\Unauthorized.cshtml" />
+    <Content Include="Views\Engineer\EditWork_Orders.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
