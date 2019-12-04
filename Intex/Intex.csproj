@@ -116,6 +116,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AdminCustomersController.cs" />
+    <Compile Include="Controllers\AssaysAdminController.cs" />
     <Compile Include="Controllers\AssaysController.cs" />
     <Compile Include="Controllers\Compound_ReceiptsController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
@@ -199,6 +200,11 @@
     <Content Include="Views\Home\Unauthorized.cshtml" />
     <Content Include="Views\Engineer\EditWork_Orders.cshtml" />
     <Content Include="Views\Engineer\listAssays.cshtml" />
+    <Content Include="Views\AssaysAdmin\Create.cshtml" />
+    <Content Include="Views\AssaysAdmin\Delete.cshtml" />
+    <Content Include="Views\AssaysAdmin\Details.cshtml" />
+    <Content Include="Views\AssaysAdmin\Edit.cshtml" />
+    <Content Include="Views\AssaysAdmin\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

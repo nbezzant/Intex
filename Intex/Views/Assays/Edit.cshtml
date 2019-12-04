@@ -56,10 +56,10 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Array_Results, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.Assay_Results, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.Array_Results, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Array_Results, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.Assay_Results, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Assay_Results, "", new { @class = "text-danger" })
         </div>
     </div>
 
@@ -72,5 +72,5 @@
 }
 
     <div>
-        <input type="button" class="btn btn-info btn" value="Back to List" onclick="location.href='@Url.Action("Index")'" />
+        <input type="button" class="btn btn-info btn" value="Back to List" onclick="location.href='@Url.Action("Home","Customers")'" />
     </div>

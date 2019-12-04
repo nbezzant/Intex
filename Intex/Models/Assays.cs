@@ -13,6 +13,7 @@ namespace Intex.Models
         [Key]
         [Display(Name ="Assay Id")]
         public int Assay_ID { get; set; }
+        [StringLength(2)]
         [Display(Name ="Assay Abbreviation")]
         public string Assay_Abbreviation { get; set; }
         [Display(Name = "Assay Description")]
@@ -24,6 +25,6 @@ namespace Intex.Models
         [Display(Name ="Base Price")]
         public double Base_Price { get; set; }
         [Display(Name ="Array Results")]
-        public string Array_Results { get; set; }
+        public string Assay_Results { get; set; }
     }
 }
