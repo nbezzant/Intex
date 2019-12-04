@@ -69,5 +69,6 @@
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Work_Order_ID }) |
+    @Html.ActionLink("See Assays", "SeeAssayOnTest", "Assays", new { id = Model.Work_Order_ID }, null) |
     @Html.ActionLink("Back to List", "Index")
 </p>

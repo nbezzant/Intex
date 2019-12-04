@@ -14,12 +14,12 @@ namespace Intex.Controllers
     public class Customer_PaymentController : Controller
     {
         private NorthwestLabsContext db = new NorthwestLabsContext();
-
-        // GET: Customer_Payment
-        public ActionResult Index()
+        public static List<string> lstCardTypes = new List<string>()
         {
-            return View(db.Customer_Payments.ToList());
-        }
+            "Credit",
+            "Debit"
+        };
+        
 
         // GET: Customer_Payment/Details/5
         public ActionResult Details(int? id)
@@ -39,6 +39,7 @@ namespace Intex.Controllers
         // GET: Customer_Payment/Create
         public ActionResult Create()
         {
+            ViewBag.CardType = lstCardTypes;
             return View();
         }
 
@@ -53,7 +54,7 @@ namespace Intex.Controllers
             {
                 db.Customer_Payments.Add(customer_Payment);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Home", "Customers", new { area = ""});
             }
 
             return View(customer_Payment);
@@ -62,6 +63,7 @@ namespace Intex.Controllers
         // GET: Customer_Payment/Edit/5
         public ActionResult Edit(int? id)
         {
+            ViewBag.CardType = lstCardTypes;
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -85,36 +87,11 @@ namespace Intex.Controllers
             {
                 db.Entry(customer_Payment).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", new { id = customer_Payment.Customer_Payment_ID});
             }
             return View(customer_Payment);
         }
 
-        // GET: Customer_Payment/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Customer_Payment customer_Payment = db.Customer_Payments.Find(id);
-            if (customer_Payment == null)
-            {
-                return HttpNotFound();
-            }
-            return View(customer_Payment);
-        }
-
-        // POST: Customer_Payment/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Customer_Payment customer_Payment = db.Customer_Payments.Find(id);
-            db.Customer_Payments.Remove(customer_Payment);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
 
         protected override void Dispose(bool disposing)
         {

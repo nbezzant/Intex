@@ -44,9 +44,9 @@ namespace Intex.Models
         [Display(Name = "User Role ID")]
         [Required]
         public int User_Role_ID { get; set; }
-        [Display(Name = "Customer")]
+        [Display(Name = "Customer Payment")]
         [Required]
-        public List<Customer_Payment> Customer_Payment_ID;
+        public int Customer_Payment_ID;
         // make sure to have new statement in customer controller
 
     }
