@@ -3,11 +3,14 @@
     ViewBag.Title = "Home";
 }
 
-<h2>Home</h2>
+<center>
+    <h2>Welcome! Choose an option to view below:</h2>
+</center>
 
-
-<input type="button" class="btn btn-info btn" value="See Profile" onclick="location.href='@Url.Action("Details", new { id = Model.Customer_ID })'" />
- &nbsp | &nbsp 
-<input type="button" class="btn btn-info btn" value="Create Order" onclick="location.href='@Url.Action("Create", "Work_Orders")'" />
-&nbsp | &nbsp
-<input type="button" class="btn btn-info btn" value="See Personal Orders" onclick="location.href='@Url.Action("Index", "Work_Orders")'" />
+<center>
+    <div class="jumbotron">
+        <input type="button" class="btn btn-info btn-lg" value="See Profile" onclick="location.href='@Url.Action("Details", new { id = Model.Customer_ID })'" />
+        <input type="button" class="btn btn-info btn-lg" value="Create Order" onclick="location.href='@Url.Action("Create", "Work_Orders")'" />
+        <input type="button" class="btn btn-info btn-lg" value="See Personal Orders" onclick="location.href='@Url.Action("Index", "Work_Orders")'" />
+    </div>
+</center>
