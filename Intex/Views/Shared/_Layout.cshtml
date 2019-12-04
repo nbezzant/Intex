@@ -14,20 +14,36 @@
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar">
-                       
+
                     </span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
                 @Html.ActionLink("Northwest Labs", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+                <!--<li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Login
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="Url.Action("Login", "Home", new { id = 1})">Customer</a>
+            <a class="dropdown-item" href="Url.Action("Login", "Home", new { id = 2})">Engineer</a>
+            <a class="dropdown-item" href="Url.Action("Login", "Home", new { id = 3})">Admin</a>
+        </div>
+    </li>
+        -->
             </div>
+
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     @Html.ActionLink("Engineer", "Index", "Engineer")
                     <br />
                     @Html.ActionLink("Customer", "Home", "Customers")
+                    <br />
+                    @Html.ActionLink("Admin", "Home", "Admin")
                 </ul>
-            </div>
+    </div>
+        
         </div>
     </div>
 
