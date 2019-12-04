@@ -1,0 +1,42 @@
+﻿@model Intex.Models.Assays
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Assays</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Assay_Desc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Assay_Desc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Assay_Duration)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Assay_Duration)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Employee_Cost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Employee_Cost)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Assay_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

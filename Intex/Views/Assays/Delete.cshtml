@@ -1,0 +1,48 @@
+﻿@model Intex.Models.Assays
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Assays</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Assay_Desc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Assay_Desc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Assay_Duration)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Assay_Duration)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Employee_Cost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Employee_Cost)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
