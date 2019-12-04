@@ -10,9 +10,10 @@
 {
     @Html.AntiForgeryToken()
     <h5>Are you sure you want to add the following Assay to your work order?</h5>
-    @Html.DisplayFor(model=>model.Assay_Desc)
+    @Html.DisplayFor(model => model.Assay_Desc)
 
-    @Html.ActionLink("Yes", "Index","Assays",new { id = ViewBag.ID})
+    <input type="button" class="btn btn-info btn" value="Yes" onclick="location.href='@Url.Action("Index", "Assays", new { id = ViewBag.ID })'" />
+
 
 }
 

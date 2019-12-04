@@ -21,6 +21,7 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "EditMaterial", new { id = Model.Material_ID }) |
-    @Html.ActionLink("Back to List", "ListMaterials")
+    <input type="button" class="btn btn-info btn" value="Edit" onclick="location.href='@Url.Action("EditMaterial", new { id = Model.Material_ID })'" />
+    &nbsp | &nbsp
+    <input type="button" class="btn btn-info btn" value="Back to List" onclick="location.href='@Url.Action("ListMaterials")'" />
 </p>

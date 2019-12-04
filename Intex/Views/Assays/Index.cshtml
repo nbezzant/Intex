@@ -35,9 +35,13 @@
             @Html.DisplayFor(modelItem => item.Employee_Cost)
         </td>
         <td>
-            @Html.ActionLink("Add to Order", "add2Test",new { id = item.Assay_ID}) |
-            @Html.ActionLink("Edit", "Edit", new { id=item.Assay_ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Assay_ID }) 
+            <input type="button" class="btn btn-info btn" value="Add to Order" onclick="location.href='@Url.Action("add2Test", new { id = item.Assay_ID })'" />
+        </td>
+        <td>
+            <input type="button" class="btn btn-info btn" value="Edit" onclick="location.href='@Url.Action("Edit", new { id = item.Assay_ID })'" />
+        </td>
+        <td>
+            <input type="button" class="btn btn-info btn" value="Details" onclick="location.href='@Url.Action("Details", new { id = item.Assay_ID })'" />
         </td>
     </tr>
 }

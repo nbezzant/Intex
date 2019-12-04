@@ -7,7 +7,8 @@
 <h2>Assays included on this work order.</h2>
 
 <p>
-    @Html.ActionLink("Add Assay", "Index", new { id = ViewBag.ID})
+    <input type="button" class="btn btn-info btn" value="Add Assay" onclick="location.href='@Url.Action("Index", new { id = ViewBag.ID })'" />
+
 </p>
 <table class="table">
     <tr>
@@ -35,9 +36,8 @@
             @Html.DisplayFor(modelItem => item.Employee_Cost)
         </td>
         <td>
-
-            @Html.ActionLink("Details", "Details", new { id=item.Assay_ID }) |
-<!-- Add ability for them to delete an assay from their work order-->
+            <input type="button" class="btn btn-info btn" value="Details" onclick="location.href='@Url.Action("Details", new { id = item.Assay_ID })'" />
+            <!-- Add ability for them to delete an assay from their work order-->
         </td>
     </tr>
 }

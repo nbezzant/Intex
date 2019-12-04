@@ -55,6 +55,6 @@
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+    <div>
+        <input type="button" class="btn btn-info btn" value="Back to List" onclick="location.href='@Url.Action("Index")'" />
+    </div>

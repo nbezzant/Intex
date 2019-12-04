@@ -7,7 +7,8 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "CreateMaterial")
+    <input type="button" class="btn btn-info btn" value="Create New" onclick="location.href='@Url.Action("CreateMaterial")'" />
+
 </p>
 <table class="table">
     <tr>
@@ -23,9 +24,11 @@
             @Html.DisplayFor(modelItem => item.Material_Name)
         </td>
         <td>
-            @Html.ActionLink("Edit", "EditMaterial", new { id=item.Material_ID }) |
-            @Html.ActionLink("Details", "DetailsMaterial", new { id=item.Material_ID }) |
-            @Html.ActionLink("Delete", "DeleteMaterial", new { id=item.Material_ID })
+            <input type="button" class="btn btn-info btn" value="Edit" onclick="location.href='@Url.Action("EditMaterial", new { id = item.Material_ID })'" />
+            &nbsp | &nbsp
+            <input type="button" class="btn btn-info btn" value="Details" onclick="location.href='@Url.Action("DetailsMaterial", new { id = item.Material_ID })'" />
+            &nbsp | &nbsp
+            <input type="button" class="btn btn-info btn" value="Delete" onclick="location.href='@Url.Action("DeleteMaterial", new { id = item.Material_ID })'" />
         </td>
     </tr>
 }

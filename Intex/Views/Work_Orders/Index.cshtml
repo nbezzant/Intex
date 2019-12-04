@@ -12,7 +12,8 @@
 <h2>Work Orders</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <input type="button" class="btn btn-info btn" value="Create New" onclick="location.href='@Url.Action("Create")'" />
+
 </p>
 <table class="table">
     <tr>
@@ -45,38 +46,42 @@
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @split[iNum]
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Customer_ID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Instructions)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Rush)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Conditional_Tests)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price_Quote)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Discount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Total_Cost)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Work_Order_ID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Work_Order_ID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Work_Order_ID })
-            </td>
-            @{ iNum++;}
-        </tr>
+    <tr>
+        <td>
+            @split[iNum]
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Customer_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Instructions)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rush)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Conditional_Tests)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price_Quote)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Discount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Total_Cost)
+        </td>
+        <td>
+            <input type="button" class="btn btn-info btn" value="Edit" onclick="location.href='@Url.Action("Edit", new { id = item.Work_Order_ID })'" />
+        </td>
+        <td>
+            <input type="button" class="btn btn-info btn" value="Details" onclick="location.href='@Url.Action("Details", new { id = item.Work_Order_ID })'" />
+        </td>
+        <td>
+            <input type="button" class="btn btn-info btn" value="Delete" onclick="location.href='@Url.Action( "Delete", new { id = item.Work_Order_ID })'" />
+        </td>
+        @{ iNum++;}
+    </tr>
     }
 
 </table>
