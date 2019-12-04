@@ -201,6 +201,7 @@
     <Content Include="Views\Compound_Receipts\Edit.cshtml" />
     <Content Include="Views\Compound_Receipts\Index.cshtml" />
     <Content Include="Views\Home\Unauthorized.cshtml" />
+    <Content Include="Views\Engineer\EditWork_Orders.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

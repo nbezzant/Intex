@@ -9,7 +9,7 @@
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
-    
+    @Html.Raw(ViewBag.error)
     <div class="form-horizontal">
         <h4>Compound_Receipts</h4>
         <hr />
