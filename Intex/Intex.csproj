@@ -188,6 +188,7 @@
     <Content Include="Views\AdminCustomers\Details.cshtml" />
     <Content Include="Views\AdminCustomers\Edit.cshtml" />
     <Content Include="Views\AdminCustomers\Index.cshtml" />
+    <Content Include="Views\Assays\SeeAssayOnTest.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

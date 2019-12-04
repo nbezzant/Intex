@@ -14,6 +14,7 @@ namespace Intex.Controllers
     public class AssaysController : Controller
     {
         private NorthwestLabsContext db = new NorthwestLabsContext();
+       
         public static int workOrderId = -5;
         // GET: Assays
         public ActionResult Index(int id)
@@ -36,8 +37,15 @@ namespace Intex.Controllers
         }
         public ActionResult SeeAssayOnTest()
         {
+            IEnumerable<Assays> assays =
+            db.Database.SqlQuery<Assays>("SELECT *" +
+                                        "FROM Assays, Work_Order_Assays, Work_Orders " +
+                                        "WHERE Work_Orders.Work_Order_ID = Work_Order_Assays.Work_Order_ID "+
+                                        "AND Work_Order_Assays.Assay_ID = Assays.Assay_ID " +
+                                        "AND Work_Orders.Work_Order_Id = " + workOrderId);
+          
             //need to create a sql statement that takes it out with the id of workorder id
-            return View();
+            return View(assays);
         }
         // GET: Assays/Details/5
         public ActionResult Details(int? id)
