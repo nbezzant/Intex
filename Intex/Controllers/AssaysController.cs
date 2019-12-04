@@ -11,6 +11,8 @@ using Intex.Models;
 
 namespace Intex.Controllers
 {
+    [Authorize(Roles = "Customer,Engineer,Admin")]
+
     public class AssaysController : Controller
     {
         private NorthwestLabsContext db = new NorthwestLabsContext();
