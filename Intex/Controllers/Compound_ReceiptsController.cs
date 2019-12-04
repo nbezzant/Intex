@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 using Intex.DAL;
@@ -52,6 +53,32 @@ namespace Intex.Controllers
         {
             if (ModelState.IsValid)
             {
+                 if (compound_Receipts.Date_Arrived != null)
+                 {
+                    Customers cust = db.Customers.FirstOrDefault(p => p.Email == User.Identity.Name);
+                    var senderEmail = new MailAddress("rankIS403@gmail.com", "werenumber1");
+                    var receiverEmail = new MailAddress(cust.Email, "Receiver");
+                    var password = "werenumber1";
+                    var body = "Your Order has been received in Singapore on date: "+compound_Receipts.Date_Arrived+". We will begin working on the tests as soon as possible.";
+                    var smtp = new SmtpClient
+                    {
+                        Host = "smtp.gmail.com",
+                        Port = 587,
+                        EnableSsl = true,
+                        DeliveryMethod = SmtpDeliveryMethod.Network,
+                        UseDefaultCredentials = false,
+                        Credentials = new NetworkCredential(senderEmail.Address, password)
+                    };
+                    using (var mess = new MailMessage(senderEmail, receiverEmail)
+                    {
+                        Subject = "From Northwest Labs Singapore",
+                        Body = "Our email if you have any questions: " + senderEmail.Address + "\n" + "Message: " + body
+                    })
+                    {
+                        smtp.Send(mess);
+                    }
+                }
+          
                 db.Compound_Receipts.Add(compound_Receipts);
                 db.SaveChanges();
                 return RedirectToAction("Index");
