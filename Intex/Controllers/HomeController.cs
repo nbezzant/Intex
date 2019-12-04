@@ -14,6 +14,10 @@ namespace Intex.Controllers
 
         private NorthwestLabsContext db = new NorthwestLabsContext();
         // GET: Home
+        public ActionResult Unauthorized()
+        {
+            return View();
+        }
         public ActionResult Index()
         {
             return View();
@@ -40,6 +44,12 @@ namespace Intex.Controllers
                 ViewBag.Error = "Incorrect username or password. Please try again.";
                 return View();
             }
+
+        }
+        public ActionResult LogOut()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Login", "Home");
         }
 
     }

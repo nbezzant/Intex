@@ -120,6 +120,7 @@
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\EngineerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Models\UsersRoleProvider.cs" />
     <Compile Include="Controllers\Work_OrdersController.cs" />
     <Compile Include="DAL\NorthwestLabsContext.cs" />
     <Compile Include="Global.asax.cs">
@@ -189,6 +190,7 @@
     <Content Include="Views\Compound_Receipts\Details.cshtml" />
     <Content Include="Views\Compound_Receipts\Edit.cshtml" />
     <Content Include="Views\Compound_Receipts\Index.cshtml" />
+    <Content Include="Views\Home\Unauthorized.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -18,6 +18,10 @@ namespace Intex.Controllers
         public ActionResult Home()
         {
             Customers cust = db.Customers.FirstOrDefault(p => p.Email == User.Identity.Name);
+            if(cust== null)
+            {
+                return RedirectToAction("Login", "Home");
+            }
             return View(cust);
         }
         public ActionResult Index()
@@ -26,6 +30,7 @@ namespace Intex.Controllers
         }
 
         // GET: Customers/Details/5
+        [Authorize(Roles ="Customer,Engineer,Admin")]
         public ActionResult Details(int? id)
         {
             if (id == null) {
@@ -45,6 +50,7 @@ namespace Intex.Controllers
         }
 
         // GET: Customers/Create
+
         public ActionResult Create()
         {
             return View();
@@ -72,7 +78,7 @@ namespace Intex.Controllers
                 {
                 db.Customers.Add(customers);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Home", "Customers");
                 }
             }
 
@@ -80,6 +86,7 @@ namespace Intex.Controllers
         }
 
         // GET: Customers/Edit/5
+        [Authorize(Roles = "Customer,Engineer,Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -99,6 +106,7 @@ namespace Intex.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Customer,Engineer,Admin")]
         public ActionResult Edit([Bind(Include = "Customer_ID,Username,Password,First_Name,Last_Name,Street_Address,City,State,Phone,Email,User_Role_ID")] Customers customers)
         {
             if (ModelState.IsValid)
@@ -111,6 +119,7 @@ namespace Intex.Controllers
         }
 
         // GET: Customers/Delete/5
+        [Authorize(Roles = "Customer,Engineer,Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -127,6 +136,7 @@ namespace Intex.Controllers
 
         // POST: Customers/Delete/5
         [HttpPost, ActionName("Delete")]
+        [Authorize(Roles = "Customer,Engineer,Admin")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
