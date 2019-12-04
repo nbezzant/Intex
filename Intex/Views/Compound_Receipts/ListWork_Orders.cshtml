@@ -69,10 +69,10 @@
             @Html.DisplayFor(modelItem => item.Work_Order_ID)
         </td>
         <td>
-            @Html.ActionLink("Edit", "EditWork_Orders","Engineer", new { id = item.Work_Order_ID },null)
+            <input type="button" class="btn btn-info btn" value="Edit" onclick="location.href='@Url.Action("EditWork_Orders", "Engineer", new { id = item.Work_Order_ID })'" />
         </td>
         <td>
-            @Html.ActionLink("Details", "Details","Work_Orders", new { id = item.Work_Order_ID }, null)
+            <input type="button" class="btn btn-info btn" value="Details" onclick="location.href='@Url.Action("Details", "Work_Orders", new { id = item.Work_Order_ID })'" />
         </td>
     </tr>
 }
