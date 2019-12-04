@@ -4,5 +4,6 @@
 }
 
 <h2>Unauthorized</h2>
-@Html.ActionLink("Login", "Login","Home")
+<input type="button" class="btn btn-info btn" value="Login" onclick="location.href='@Url.Action("Login", "Home")'" />
+
 

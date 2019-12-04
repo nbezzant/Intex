@@ -7,8 +7,7 @@
 <h2>Customers</h2>
 
 <p>
-    <input type="button" class="btn btn-info btn-lg" value="Create New" onclick="location.href='@Url.Action("Create")'" />
-    @Html.ActionLink("Create New", "Create")
+    <input type="button" class="btn btn-info btn" value="Create New" onclick="location.href='@Url.Action("Create")'" />
 </p>
 <table class="table">
     <tr>
@@ -77,9 +76,15 @@
             @Html.DisplayFor(modelItem => item.User_Role_ID)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", "AdminCustomers", new { id = item.Customer_ID }, null) |
-            @Html.ActionLink("Details", "Details", "AdminCustomers", new { id = item.Customer_ID }, null) |
-            @Html.ActionLink("Delete", "Delete", "AdminCustomers", new { id = item.Customer_ID }, null)
+
+            <input type="button" class="btn btn-info btn-sm" value="Edit" onclick="location.href='@Url.Action("Edit", "AdminCustomers", new { id = item.Customer_ID })'" />
+        </td>
+        <td>
+            <input type="button" class="btn btn-info btn-sm" value="Details" onclick="location.href='@Url.Action("Details", "AdminCustomers", new { id = item.Customer_ID })'" />
+        </td>
+        <td>
+            <input type="button" class="btn btn-info btn-sm" value="Delete" onclick="location.href='@Url.Action("Delete", "AdminCustomers", new { id = item.Customer_ID })'" />
+
         </td>
     </tr>
 }

@@ -91,7 +91,9 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Customer_ID }) |
-    @Html.ActionLink("View Payment Information", "Details", "Customer_Payment", new { id = Model.Customer_ID }, null) |
-    @Html.ActionLink("Back to Customer Home", "Home")
+    <input type="button" class="btn btn-info btn" value="Edit" onclick="location.href='@Url.Action("Edit", new { id = Model.Customer_ID })'" />
+    &nbsp | &nbsp
+    <input type="button" class="btn btn-info btn" value="View Payment Information" onclick="location.href='@Url.Action("Details", "Customer_Payment", new { id = Model.Customer_ID })'" />
+    &nbsp | &nbsp
+    <input type="button" class="btn btn-info btn" value="Back to Customer Home" onclick="location.href='@Url.Action("Home")'" />
 </p>

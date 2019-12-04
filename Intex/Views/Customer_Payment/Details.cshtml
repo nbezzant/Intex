@@ -45,6 +45,9 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Customer_Payment_ID }) |
-    @Html.ActionLink("Back to Customer Home", "Home", "Customers", null, null)
+
+    <input type="button" class="btn btn-info btn" value="Edit" onclick="location.href='@Url.Action("Edit", new { id = Model.Customer_Payment_ID })'" />
+    &nbsp | &nbsp
+    <input type="button" class="btn btn-info btn" value="Back to Customer Home" onclick="location.href='@Url.Action("Home", "Customers")'" />
+
 </p>

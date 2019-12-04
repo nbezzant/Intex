@@ -68,7 +68,9 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Work_Order_ID }) |
-    @Html.ActionLink("See Assays", "SeeAssayOnTest", "Assays", new { id = Model.Work_Order_ID }, null) |
-    @Html.ActionLink("Back to List", "Index")
+    <input type="button" class="btn btn-info btn" value="Edit" onclick="location.href='@Url.Action("Edit", new { id = Model.Work_Order_ID })'" />
+    |
+    <input type="button" class="btn btn-info btn" value="See Assays" onclick="location.href='@Url.Action("SeeAssayOnTest", "Assays", new { id = Model.Work_Order_ID })'" />
+    |
+    <input type="button" class="btn btn-info btn" value="Back to List" onclick="location.href='@Url.Action("Index")'" />
 </p>
