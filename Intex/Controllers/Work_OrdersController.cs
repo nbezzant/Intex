@@ -81,7 +81,7 @@ namespace Intex.Controllers
                 db.Work_Orders.Add(work_Orders);
                 db.SaveChanges();
                 // this will then take you to which assays you want to add.
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Assays", new {id = work_Orders.Work_Order_ID });
             }
 
             return View(work_Orders);
