@@ -14,20 +14,45 @@
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar">
-                       
+
                     </span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
                 @Html.ActionLink("Northwest Labs", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    @Html.ActionLink("Engineer", "Index", "Engineer")
-                    <br />
-                    @Html.ActionLink("Customer", "Home", "Customers")
+                    <li>@Html.ActionLink("Engineer", "Index", "Engineer")</li>
+                    <li>@Html.ActionLink("Customer", "Home", "Customers")</li>
+                    <li>@Html.ActionLink("Admin", "Home", "Admin")</li>
                 </ul>
+                <!--<li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Login
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="Url.Action("Login", "Home", new { id = 1})">Customer</a>
+                <a class="dropdown-item" href="Url.Action("Login", "Home", new { id = 2})">Engineer</a>
+                <a class="dropdown-item" href="Url.Action("Login", "Home", new { id = 3})">Admin</a>
             </div>
+        </li>
+            -->
+            </div>
+
+            <!--<div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+            Html.ActionLink("Engineer", "Index", "Engineer")
+            <br />
+            Html.ActionLink("Customer", "Home", "Customers")
+            <br />
+            Html.ActionLink("Admin", "Home", "Admin")
+        </ul>
+    </div>-->
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="@Url.Action("Create", "Customers")"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li><a href="@Url.Action("Login", "Home")"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            </ul>
+
         </div>
     </div>
 

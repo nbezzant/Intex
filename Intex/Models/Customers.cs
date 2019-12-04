@@ -12,12 +12,7 @@ namespace Intex.Models
     {
         [Key]
         public int Customer_ID { get; set; }
-        [Display(Name = "Username")]
-        [Required]
-        public string Username { get; set; }
-        [Display(Name = "Password")]
-        [Required]
-        public string Password { get; set; }
+
         [Display(Name ="First Name")]
         [Required]
         public string First_Name { get; set; }
@@ -43,6 +38,9 @@ namespace Intex.Models
         [Display(Name = "Qualify for Discount")]
         [Required]
         public bool Qualify_Discount { get; set; }
+        [Display(Name = "Password")]
+        [Required]
+        public string Password { get; set; }
         [Display(Name = "User Role ID")]
         [Required]
         public int User_Role_ID { get; set; }
