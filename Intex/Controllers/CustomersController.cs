@@ -72,7 +72,7 @@ namespace Intex.Controllers
                 {
                 db.Customers.Add(customers);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Create", "Customer_Payment", new { area = ""});
                 }
             }
 

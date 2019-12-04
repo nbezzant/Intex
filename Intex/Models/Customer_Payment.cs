@@ -19,12 +19,12 @@ namespace Intex.Models
         public string Card_Type { get; set; } //Need to add this as a type maybe so it can be a drop down list
         [Display(Name = "Card Number")]
         [Required]
-        public double Card_Num { get; set; }
+        public string Card_Num { get; set; }
         [Required]
         [Display(Name = "Expiration Date")]
         public string Card_Expiration { get; set; }
         [Required]
         [Display(Name ="Security Code")]
-        public int Card_CSV { get; set; }
+        public string Card_CVV { get; set; }
     }
 }
