@@ -14,6 +14,7 @@ namespace Intex.Controllers
     public class AssaysController : Controller
     {
         private NorthwestLabsContext db = new NorthwestLabsContext();
+        public List<Assays> lstAssays = new List<Assays>();
         public static int workOrderId = -5;
         // GET: Assays
         public ActionResult Index(int id)
