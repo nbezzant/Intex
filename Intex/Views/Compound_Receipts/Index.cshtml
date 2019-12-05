@@ -108,7 +108,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.Work_Order_ID)
         </td>
-       
+
         <td>
 
             <input type="button" class="btn btn-info btn-sm" value="Edit" onclick="location.href='@Url.Action("Edit", new { id = item.Compound_Receipt_ID })'" />
@@ -118,6 +118,9 @@
         </td>
         <td>
             <input type="button" class="btn btn-info btn-sm" value="Delete" onclick="location.href='@Url.Action("Delete", new { id = item.Compound_Receipt_ID })'" />
+        </td>
+        <td>
+            <input type="button" class="btn btn-info btn-sm" value="Send Report" onclick="location.href='@Url.Action("SendReceipt", new { id = item.Compound_Receipt_ID })'" />
         </td>
     </tr>
 }

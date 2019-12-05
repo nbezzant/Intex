@@ -81,6 +81,7 @@ namespace Intex.Controllers
                                          "Work_Orders.Work_Order_ID = Compound_Receipts.Work_Order_ID " +
                                          "where Work_Orders.Work_Order_ID = " + compound_Receipts.Work_Order_ID);
                         Customers cust = db.Customers.FirstOrDefault(p => p.Email == User.Identity.Name);
+                       
                         List<Customers> listReceipt = receipt.ToList();
                         Customers firstReceipt = listReceipt.First();
                         var senderEmail = new MailAddress("rankIS403@gmail.com", "Northwest Labs");
@@ -187,7 +188,58 @@ namespace Intex.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
+        public ActionResult SendReceipt(int id)
+        {
+            IEnumerable<Customers> receipt =
+            db.Database.SqlQuery<Customers>("select distinct Customers.Customer_ID, customers.First_Name, Customers.Last_Name, customers.Street_Address, Customers.City, customers.State, Customers.Phone, Customers.Email, customers.Qualify_Discount, Customers.Password, customers.User_Role_ID " +
+                                        "FROM Customers " +
+                                        "inner join Work_Orders on " +
+                                        "Work_Orders.Customer_ID = Customers.Customer_ID " +
+                                        "inner join Compound_Receipts on " +
+                                        "Work_Orders.Work_Order_ID = Compound_Receipts.Work_Order_ID " +
+                                        "where Work_Orders.Work_Order_ID = " + id);
+            Compound_Receipts compound_Receipts = db.Compound_Receipts.Find(id);
+            Customers cust = db.Customers.FirstOrDefault(p => p.Email == User.Identity.Name);
+            List<Customers> listReceipt = receipt.ToList();
+            Customers firstReceipt = listReceipt.First();
+            var senderEmail = new MailAddress("rankIS403@gmail.com", "Northwest Labs");
+            var receiverEmail = new MailAddress(firstReceipt.Email, "Receiver");
+            var password = "werenumber1";
+            var body = "Recipe ID: " + compound_Receipts.Compound_Receipt_ID + "\n" +
+                "Lab Tests Number: " + compound_Receipts.LT + "\n" +
+                "Compound sequence code: " + compound_Receipts.Compound_Sequence_Code + "\n" +
+                "Compound Name: " + compound_Receipts.Compound_Name + "\n" +
+                "Quantity: " + compound_Receipts.Quantity + "\n" +
+                "Date Arived: " + compound_Receipts.Date_Arrived + "\n" +
+                "Received By: " + compound_Receipts.Received_By + "\n" +
+                "Date Due: " + compound_Receipts.Date_Due + "\n" +
+                "Appearance: " + compound_Receipts.Appearance + "\n" +
+                "Indicated Weight: " + compound_Receipts.Indicated_Weight + "\n" +
+                "Molecular Mass: " + compound_Receipts.Molecular_Mass + "\n" +
+                "Actual Weight: " + compound_Receipts.Actual_Weight + "\n" +
+                "Maximum Tolerated Dose: " + compound_Receipts.MTD + "\n" +
+                "Confirmation Date: " + compound_Receipts.Confirmation_Date + "\n" +
+                "Work Order ID: " + compound_Receipts.Work_Order_ID + "\n" +
+                "Test Results: " + compound_Receipts.Test_Results;
+            var smtp = new SmtpClient
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(senderEmail.Address, password)
+            };
+            using (var mess = new MailMessage(senderEmail, receiverEmail)
+            {
+                Subject = "From Northwest Labs Singapore",
+                Body = "Our email if you have any questions: " + senderEmail.Address + "\n" + "Message: " + body
+            })
+            {
+                smtp.Send(mess);
+            }
+            return RedirectToAction("Index", "Home");
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)
