@@ -10,7 +10,7 @@ namespace Intex.Models
     {
         [Key]
         public int Database_Number { get; set; }
-        [Display(Name ="Order Number")]
+        [Display(Name ="Number in Schedule")]
         public int order { get; set; }
         [Display(Name = "Assay ID for work ID")]
         public int Work_Order_Assay_ID { get; set; }

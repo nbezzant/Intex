@@ -16,7 +16,7 @@ namespace Intex.Controllers
         // GET: Contact
         public ActionResult Index()
         {
-            ViewBag.Support = "Please call Support at <b><u>801-555-1212</u></b>. Thank you!";
+            ViewBag.Support = "Please call Support at <b>801-555-1212</b>. Thank you!";
             return View();
         }
 

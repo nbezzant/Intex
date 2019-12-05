@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Sorted Assays</h2>
 
 
 <table class="table">
@@ -12,7 +12,7 @@
         <th>
             @Html.DisplayNameFor(model => model.order)
         </th>
-        <th>
+        <th hidden>
             @Html.DisplayNameFor(model => model.Work_Order_Assay_ID)
         </th>
         <th>
@@ -35,7 +35,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.order)
         </td>
-        <td>
+        <td hidden>
             @Html.DisplayFor(modelItem => item.Work_Order_Assay_ID)
         </td>
         <td>
