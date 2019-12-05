@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 using Intex.DAL;
@@ -22,9 +23,48 @@ namespace Intex.Controllers
         public ActionResult Index(int id)
         {
             workOrderId = id;
+
             return View(db.Assays.ToList());  
         }
+        public ActionResult SendQuote()
+        {
+            IEnumerable<Work_Order_Assays> assays =
+              db.Database.SqlQuery<Work_Order_Assays>("select Work_Order_Assay_ID, Work_Order_Assays.Work_Order_ID,Work_Order_Assays.Assay_Cost,Work_Order_Assays.Assay_ID " +
+              "from Work_Order_Assays " +
+              "Where Work_order_Assays.Work_Order_ID = " + workOrderId);
+            List<Work_Order_Assays> myList = assays.ToList();
+            double totalPrice = 0;
+            foreach (Work_Order_Assays thing in myList)
+            {
+                totalPrice += thing.Assay_Cost;
+            }
+            Customers cust = db.Customers.FirstOrDefault(p => p.Email == User.Identity.Name);// get customer
 
+            var senderEmail = new MailAddress("rankIS403@gmail.com", "NorthWest Labs");
+            var receiverEmail = new MailAddress(cust.Email, "Receiver");
+            var password = "werenumber1";
+            var body = "Thank you for Finalizing your work order! This is the original estimated price: " + totalPrice + ". " +
+                        "However this price is not final, and is subject to change. If you would like to see your updated cost based on assay's selected. You can see it on the See your orders page on the website.";
+            var smtp = new SmtpClient
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(senderEmail.Address, password)
+            };
+            using (var mess = new MailMessage(senderEmail, receiverEmail)
+            {
+                Subject = "From Northwest Labs Singapore",
+                Body = body + "\n\n" + "Our email if you have any questions: " + senderEmail.Address + "\n"
+            })
+            {
+                smtp.Send(mess);
+            }
+
+            return RedirectToAction("Index", "Home");
+        }
         public ActionResult add2Test(int? id)
         {
             ViewBag.ID = id;
@@ -32,7 +72,7 @@ namespace Intex.Controllers
             Work_Order_Assays theTest = new Work_Order_Assays();
             theTest.Work_Order_ID = workOrderId;
             theTest.Assay_ID = assays.Assay_ID;
-            theTest.Assay_Cost = assays.Base_Price + assays.Employee_Cost;
+            theTest.Assay_Cost = assays.Base_Price + assays.Employee_Cost* assays.Assay_Duration;
             db.Work_Order_Assays.Add(theTest);
             db.SaveChanges();
             return RedirectToAction("Index", new { id = workOrderId });

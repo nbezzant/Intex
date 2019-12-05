@@ -29,16 +29,42 @@ namespace Intex.Controllers
                 lstWork_Orders = db.Work_Orders
                .Where(o => o.Customer_ID == cust.Customer_ID)
                .ToList();
+               
+
 
 
                 foreach (Work_Orders order in lstWork_Orders)
                 {
+                    IEnumerable<Work_Order_Assays> assays =
+               db.Database.SqlQuery<Work_Order_Assays>("select Work_Order_Assay_ID, Work_Order_Assays.Work_Order_ID,Work_Order_Assays.Assay_Cost,Work_Order_Assays.Assay_ID " +
+               "from Work_Order_Assays " +
+               "Where Work_order_Assays.Work_Order_ID = " + order.Work_Order_ID);
+                    List<Work_Order_Assays> myList = assays.ToList();
+                    double totalPrice = 0;
+                    foreach(Work_Order_Assays thing in myList)
+                    {
+                        totalPrice += thing.Assay_Cost;
+                    }
+                    if (order.Rush)
+                    {
+                        totalPrice = totalPrice * 1.15;
+                    }
+                    if(order.Discount)
+                    {
+                        totalPrice = totalPrice - totalPrice * .15;
+                    }
+                    order.Price_Quote = totalPrice;
+                    if (order.Conditional_Tests)
+                    {
+                        totalPrice = totalPrice + totalPrice * .5;
+                    }
+                    order.Total_Cost = totalPrice;
                     Status myStatus = db.Statuses.FirstOrDefault(o => o.Status_ID == order.Status_ID);
                     string sStatus = myStatus.Status_Desc;
                     ViewBag.Statuses = ViewBag.Statuses + sStatus + ",";
 
                 }
-
+                
                 return View(lstWork_Orders);
             }
             else
