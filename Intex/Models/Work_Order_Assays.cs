@@ -19,5 +19,7 @@ namespace Intex.Models
         public double Assay_Cost { get; set; }
         [Display(Name = "Assay ID")]
         public int Assay_ID { get; set; }
+        [Display(Name = "Assay Results")]
+        public string Assay_results { get; set; }
     }
 }

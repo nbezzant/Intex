@@ -24,7 +24,5 @@ namespace Intex.Models
         public double Employee_Cost { get; set; }
         [Display(Name ="Base Price")]
         public double Base_Price { get; set; }
-        [Display(Name ="Assay Results")]
-        public string Assay_Results { get; set; }
     }
 }

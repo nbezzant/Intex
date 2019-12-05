@@ -36,7 +36,7 @@ namespace Intex.Controllers
                 foreach (Work_Orders order in lstWork_Orders)
                 {
                     IEnumerable<Work_Order_Assays> assays =
-               db.Database.SqlQuery<Work_Order_Assays>("select Work_Order_Assay_ID, Work_Order_Assays.Work_Order_ID,Work_Order_Assays.Assay_Cost,Work_Order_Assays.Assay_ID " +
+               db.Database.SqlQuery<Work_Order_Assays>("select Work_Order_Assay_ID, Work_Order_Assays.Work_Order_ID,Work_Order_Assays.Assay_Cost,Work_Order_Assays.Assay_ID,Work_Order_Assays.Assay_Results " +
                "from Work_Order_Assays " +
                "Where Work_order_Assays.Work_Order_ID = " + order.Work_Order_ID);
                     List<Work_Order_Assays> myList = assays.ToList();
@@ -62,7 +62,10 @@ namespace Intex.Controllers
                     Status myStatus = db.Statuses.FirstOrDefault(o => o.Status_ID == order.Status_ID);
                     string sStatus = myStatus.Status_Desc;
                     ViewBag.Statuses = ViewBag.Statuses + sStatus + ",";
-
+                 
+                        db.Work_Orders.Find(order.Work_Order_ID).Total_Cost = totalPrice;
+                    db.Work_Orders.Find(order.Work_Order_ID).Price_Quote = order.Price_Quote;
+                    db.SaveChanges();
                 }
                 
                 return View(lstWork_Orders);

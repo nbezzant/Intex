@@ -103,10 +103,13 @@ namespace Intex.Controllers
                                 .Where(o => o.Work_Order_ID == compound_Receipts.Work_Order_ID);
 
                                 List<SortingworkOrders> newDate = date.ToList();
-                                SortingworkOrders lastOne = newDate.First();
-                                lastOne.Date_Due = compound_Receipts.Date_Due;
-                                db.SortingWorkOrders.FirstOrDefault(p => p.Database_Number == lastOne.Database_Number).Date_Due = compound_Receipts.Date_Due;
-                                db.SaveChanges();
+                                foreach (SortingworkOrders ordere in newDate)
+                                {
+
+                                    ordere.Date_Due = compound_Receipts.Date_Due;
+                                   // db.SortingWorkOrders.FirstOrDefault(p => p.Database_Number == lastOne.Database_Number).Date_Due = compound_Receipts.Date_Due;
+                                    db.SaveChanges();
+                                }
                                 
                             }
                         }
