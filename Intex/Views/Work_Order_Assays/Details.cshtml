@@ -1,0 +1,50 @@
+﻿@model Intex.Models.Work_Order_Assays
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Work_Order_Assays</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Work_Order_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Work_Order_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Assay_Cost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Assay_Cost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Assay_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Assay_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Assay_results)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Assay_results)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Work_Order_Assay_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

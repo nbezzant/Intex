@@ -127,6 +127,7 @@
     <Compile Include="Controllers\EngineerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SortingworkOrdersController.cs" />
+    <Compile Include="Controllers\Work_Order_AssaysController.cs" />
     <Compile Include="Models\SortingWorkOrders.cs" />
     <Compile Include="Models\UsersRoleProvider.cs" />
     <Compile Include="Controllers\Work_OrdersController.cs" />
@@ -218,6 +219,12 @@
     <Content Include="Views\SortingworkOrders\Details.cshtml" />
     <Content Include="Views\SortingworkOrders\Edit.cshtml" />
     <Content Include="Views\SortingworkOrders\Index.cshtml" />
+    <Content Include="Views\Assays\SeeAssay_WorkOnTest.cshtml" />
+    <Content Include="Views\Work_Order_Assays\Create.cshtml" />
+    <Content Include="Views\Work_Order_Assays\Delete.cshtml" />
+    <Content Include="Views\Work_Order_Assays\Details.cshtml" />
+    <Content Include="Views\Work_Order_Assays\Edit.cshtml" />
+    <Content Include="Views\Work_Order_Assays\Index.cshtml" />
     <Content Include="Views\Home\Catalog.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

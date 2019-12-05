@@ -29,7 +29,7 @@ namespace Intex.Controllers
         public ActionResult SendQuote()
         {
             IEnumerable<Work_Order_Assays> assays =
-              db.Database.SqlQuery<Work_Order_Assays>("select Work_Order_Assay_ID, Work_Order_Assays.Work_Order_ID,Work_Order_Assays.Assay_Cost,Work_Order_Assays.Assay_ID " +
+              db.Database.SqlQuery<Work_Order_Assays>("select Work_Order_Assay_ID, Work_Order_Assays.Work_Order_ID,Work_Order_Assays.Assay_Cost,Work_Order_Assays.Assay_ID,Work_Order_Assays.Assay_Results " +
               "from Work_Order_Assays " +
               "Where Work_order_Assays.Work_Order_ID = " + workOrderId);
             List<Work_Order_Assays> myList = assays.ToList();
@@ -105,7 +105,18 @@ namespace Intex.Controllers
             //need to create a sql statement that takes it out with the id of workorder id
             return View(assays);
         }
-        // GET: Assays/Details/5
+        public ActionResult SeeAssay_WorkOnTest(int id)
+        {
+            workOrderId = id;
+            ViewBag.ID = id;
+            IEnumerable<Work_Order_Assays> assays =
+            db.Database.SqlQuery<Work_Order_Assays>("SELECT * " +
+                                        "FROM Assays, Work_Order_Assays, Work_Orders " +
+                                        "WHERE Work_Orders.Work_Order_ID = Work_Order_Assays.Work_Order_ID " +
+                                        "AND Work_Order_Assays.Assay_ID = Assays.Assay_ID " +
+                                        "AND Work_Orders.Work_Order_Id = " + workOrderId);
+            return View(assays);
+        }        // GET: Assays/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
