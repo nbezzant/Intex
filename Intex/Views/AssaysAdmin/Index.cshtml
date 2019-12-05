@@ -26,9 +26,6 @@
         <th>
             @Html.DisplayNameFor(model => model.Base_Price)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Assay_Results)
-        </th>
         <th></th>
     </tr>
 
@@ -49,9 +46,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.Base_Price)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Assay_Results)
-        </td>
+
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Assay_ID }) |
             @Html.ActionLink("Details", "Details", new { id=item.Assay_ID }) |
