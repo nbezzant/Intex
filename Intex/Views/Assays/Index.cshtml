@@ -4,8 +4,6 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-
 
 <table class="table">
     <tr>
@@ -15,9 +13,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Assay_Duration)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Employee_Cost)
-        </th>
+
         <th></th>
     </tr>
 
@@ -30,9 +26,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Assay_Duration)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Employee_Cost)
-            </td>
+
             <td>
                 <input type="button" class="btn btn-info btn" value="Add to Order" onclick="location.href='@Url.Action("add2Test", new { id = item.Assay_ID })'" />
             </td>

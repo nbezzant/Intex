@@ -86,6 +86,10 @@ namespace Intex.Controllers
             {
                 return HttpNotFound();
             }
+
+            Status myStatus = db.Statuses.FirstOrDefault(o => o.Status_ID == work_Orders.Status_ID);
+            ViewBag.myStatus = myStatus.Status_Desc;
+
             return View(work_Orders);
         }
 
@@ -164,6 +168,8 @@ namespace Intex.Controllers
             Work_Orders work_Orders = db.Work_Orders.Find(id);
             ViewBag.Rush = work_Orders.Rush;
                ViewBag.Discount = work_Orders.Discount;
+            Status myStatus = db.Statuses.FirstOrDefault(o => o.Status_ID == work_Orders.Status_ID);
+            ViewBag.myStatus = myStatus.Status_Desc;
             if (work_Orders == null)
             {
                 return HttpNotFound();
