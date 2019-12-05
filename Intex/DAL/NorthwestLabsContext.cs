@@ -25,6 +25,7 @@ namespace Intex.DAL
         public DbSet<Compound_Receipts> Compound_Receipts { get; set; }
         public DbSet<Assay_Materials> Test_Materials { get; set; }
         public DbSet<Materials> Materials { get; set; }
+        public DbSet<SortingworkOrders> SortingWorkOrders { get; set; }
 
     }
 }

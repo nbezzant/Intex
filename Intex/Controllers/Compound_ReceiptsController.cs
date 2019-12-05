@@ -96,6 +96,20 @@ namespace Intex.Controllers
                         {
                             smtp.Send(mess);
                         }
+                        {// stuff to change date of due for stuff
+                            if( compound_Receipts.Date_Due != null)
+                            {
+                                IEnumerable<SortingworkOrders> date = db.SortingWorkOrders
+                                .Where(o => o.Work_Order_ID == compound_Receipts.Work_Order_ID);
+
+                                List<SortingworkOrders> newDate = date.ToList();
+                                SortingworkOrders lastOne = newDate.First();
+                                lastOne.Date_Due = compound_Receipts.Date_Due;
+                                db.SortingWorkOrders.FirstOrDefault(p => p.Database_Number == lastOne.Database_Number).Date_Due = compound_Receipts.Date_Due;
+                                db.SaveChanges();
+                                
+                            }
+                        }
                     }
                 }
           

@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Intex.Models.SortingworkOrders>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.order)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Work_Order_Assay_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Work_Order_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Assay_Cost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Assay_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date_Due)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.order)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Work_Order_Assay_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Work_Order_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Assay_Cost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Assay_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date_Due)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Database_Number }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Database_Number }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Database_Number })
+        </td>
+    </tr>
+}
+
+</table>

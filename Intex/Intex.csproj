@@ -126,6 +126,8 @@
     <Compile Include="Controllers\deletethisController.cs" />
     <Compile Include="Controllers\EngineerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SortingworkOrdersController.cs" />
+    <Compile Include="Models\SortingWorkOrders.cs" />
     <Compile Include="Models\UsersRoleProvider.cs" />
     <Compile Include="Controllers\Work_OrdersController.cs" />
     <Compile Include="DAL\NorthwestLabsContext.cs" />
@@ -201,7 +203,6 @@
     <Content Include="Views\Customer_Payment\Details.cshtml" />
     <Content Include="Views\Home\Unauthorized.cshtml" />
     <Content Include="Views\Engineer\EditWork_Orders.cshtml" />
-    <Content Include="Views\Engineer\listAssays.cshtml" />
     <Content Include="Views\AssaysAdmin\Create.cshtml" />
     <Content Include="Views\AssaysAdmin\Delete.cshtml" />
     <Content Include="Views\AssaysAdmin\Details.cshtml" />
@@ -212,6 +213,11 @@
     <Content Include="Views\deletethis\Details.cshtml" />
     <Content Include="Views\deletethis\Edit.cshtml" />
     <Content Include="Views\deletethis\Index.cshtml" />
+    <Content Include="Views\SortingworkOrders\Create.cshtml" />
+    <Content Include="Views\SortingworkOrders\Delete.cshtml" />
+    <Content Include="Views\SortingworkOrders\Details.cshtml" />
+    <Content Include="Views\SortingworkOrders\Edit.cshtml" />
+    <Content Include="Views\SortingworkOrders\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

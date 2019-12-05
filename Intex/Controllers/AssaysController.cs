@@ -65,8 +65,10 @@ namespace Intex.Controllers
 
             return RedirectToAction("Index", "Home");
         }
+        public static int count = 0;
         public ActionResult add2Test(int? id)
         {
+            count += 1;
             ViewBag.ID = id;
             Assays assays = db.Assays.Find(id);
             Work_Order_Assays theTest = new Work_Order_Assays();
@@ -75,6 +77,18 @@ namespace Intex.Controllers
             theTest.Assay_Cost = assays.Base_Price + assays.Employee_Cost* assays.Assay_Duration;
             db.Work_Order_Assays.Add(theTest);
             db.SaveChanges();
+            SortingworkOrders sortDB = new SortingworkOrders();
+            sortDB.Assay_Cost = theTest.Assay_Cost;
+            sortDB.Assay_ID = theTest.Assay_ID;
+            sortDB.Work_Order_ID = workOrderId;
+       
+            sortDB.Date_Due = Convert.ToDateTime("01/01/1901");  // get from query from thingy
+            sortDB.order = count;
+            sortDB.Work_Order_Assay_ID = theTest.Work_Order_Assay_ID;
+            db.SortingWorkOrders.Add(sortDB);
+            db.SaveChanges();
+
+
             return RedirectToAction("Index", new { id = workOrderId });
         }
         public ActionResult SeeAssayOnTest(int id)

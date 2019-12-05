@@ -22,7 +22,7 @@ namespace Intex.Controllers
         }
         public ActionResult listAssays()
         {
-            return View(db.Work_Order_Assays.ToList());
+            return View(db.SortingWorkOrders.OrderBy(x => x.order).ToList());
         }
         //inside here will be materials edits and stuff.
         public ActionResult EditWork_Orders(int? id)
