@@ -211,7 +211,16 @@ namespace Intex.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+//        public ActionResult DeleteOnList(int id)
+//        {
+////            IEnumerable<Work_Order_Assays> assays =
+////           db.Database.SqlQuery<Work_Order_Assays>("SELECT Work_Order_Assays.Work_Order_Assay_ID,Work_Order_Assays.Work_Order_ID,Work_Order_Assays.Assay_Cost, Work_Order_Assays.Assay_ID,Work_Order_Assays.Assay_Results " +
+////"FROM Assays, Work_Order_Assays, Work_Orders WHERE Work_Orders.Work_Order_ID = Work_Order_Assays.Work_Order_ID AND Work_Order_Assays.Assay_ID = Assays.Assay_ID aND Work_Orders.Work_Order_Id =" + id);
 
+////            db.Assays.Remove(assay);
+////            db.SaveChanges();
+////            return RedirectToAction("SeeAssayOnTest", workOrderId);
+//        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)
