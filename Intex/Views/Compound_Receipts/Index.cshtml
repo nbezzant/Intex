@@ -4,16 +4,16 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Compound Receipts</h2>
 
 <p>
-    <input type="button" class="btn btn-info btn" value="Create New" onclick="location.href='@Url.Action("Create")'" />
+    <input type="button" class="btn btn-info btn" value="Add compound receipt" onclick="location.href='@Url.Action("Create")'" />
 
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.LT)
+            @Html.DisplayName("LT Number")
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Compound_Sequence_Code)
@@ -51,7 +51,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Confirmation_Date)
         </th>
-        <th>
+        <th hidden>
             @Html.DisplayNameFor(model => model.Confirmation_Time)
         </th>
         <th>
@@ -101,7 +101,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.Confirmation_Date)
         </td>
-        <td>
+        <td hidden>
             @Html.DisplayFor(modelItem => item.Confirmation_Time)
         </td>
         <td>
