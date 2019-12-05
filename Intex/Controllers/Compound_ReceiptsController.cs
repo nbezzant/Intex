@@ -25,6 +25,14 @@ namespace Intex.Controllers
 
         public ActionResult ListWork_Orders()
         {
+            List<Work_Orders> work_Orders = db.Work_Orders.ToList();
+
+            foreach(Work_Orders order in work_Orders)
+            {
+                Status myStatus = db.Statuses.FirstOrDefault(o => o.Status_ID == order.Status_ID);
+                string sStatus = myStatus.Status_Desc;
+                ViewBag.Statuses = ViewBag.Statuses + sStatus + ",";
+            }
             return View(db.Work_Orders.ToList());
         }
         // GET: Compound_Receipts/Details/5
