@@ -1,0 +1,34 @@
+﻿@model IEnumerable<Intex.Models.Assays>
+
+@{
+    ViewBag.Title = "Catalog";
+}
+
+<h2>Catalog</h2>
+<br />
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Assay Name")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Assay_Duration)
+        </th>
+
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Assay_Desc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Assay_Duration)
+        </td>
+
+    </tr>
+}
+
+</table>
