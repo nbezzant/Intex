@@ -3,8 +3,13 @@
 @{
     ViewBag.Title = "listAssays";
 }
+@{
+    string[] split = ViewBag.Dates.Split(',');
 
-<h2>listAssays</h2>
+    var iNum = 0;
+}
+
+<h2>Requested Assays</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -20,10 +25,14 @@
         <th>
             @Html.DisplayNameFor(model => model.Assay_ID)
         </th>
+        <th>
+            @Html.DisplayName("Date Due")
+        </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+    @foreach (var item in Model)
+    {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Work_Order_ID)
@@ -35,11 +44,15 @@
             @Html.DisplayFor(modelItem => item.Assay_ID)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Work_Order_Assay_ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Work_Order_Assay_ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Work_Order_Assay_ID })
+            @split[iNum]
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.Work_Order_Assay_ID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Work_Order_Assay_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Work_Order_Assay_ID })
         </td>
     </tr>
-}
+    }
 
 </table>
+<input type="button" class="btn btn-info btn" value="Sort Assays by Date" onclick="location.href='@Url.Action("sortAssays")'" />

@@ -17,9 +17,9 @@
     @Html.HiddenFor(model => model.Work_Order_ID)
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Status_ID, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.Label("Status", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DisplayFor(model => model.Status_ID, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ViewBag.myStatus
             @Html.ValidationMessageFor(model => model.Status_ID, "", new { @class = "text-danger" })
         </div>
     </div>

@@ -4,24 +4,24 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Work Ordre Details</h2>
+<h2>Work Order Details</h2>
 
 <div>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Status_ID)
+            @Html.DisplayName("Status")
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Status_ID)
+            @Html.Raw(ViewBag.myStatus)
         </dd>
 
-        <dt>
+        <dt hidden>
             @Html.DisplayNameFor(model => model.Customer_ID)
         </dt>
 
-        <dd>
+        <dd hidden>
             @Html.DisplayFor(model => model.Customer_ID)
         </dd>
 
@@ -49,11 +49,11 @@
             @Html.DisplayFor(model => model.Price_Quote)
         </dd>
 
-        <dt>
+        <dt hidden>
             @Html.DisplayNameFor(model => model.Discount)
         </dt>
 
-        <dd>
+        <dd hidden>
             @Html.DisplayFor(model => model.Discount)
         </dd>
 
