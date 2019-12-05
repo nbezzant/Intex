@@ -42,5 +42,7 @@ namespace Intex.Models
         public TimeSpan Confirmation_Time { get; set; }
         [Display(Name = "Work Order ID")]
         public int Work_Order_ID { get; set; }
+        [Display(Name = "Test Results")]
+        public string Test_Results { get; set; }
     }
 }
