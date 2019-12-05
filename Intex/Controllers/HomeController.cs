@@ -22,6 +22,10 @@ namespace Intex.Controllers
         {
             return View();
         }
+        public ActionResult Catalog()
+        {
+            return View(db.Assays.ToList());
+        }
         [HttpGet]
         public ActionResult Login()
         {
