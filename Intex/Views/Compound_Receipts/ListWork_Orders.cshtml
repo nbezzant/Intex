@@ -6,6 +6,12 @@
 
 <h2>Work Orders</h2>
 
+@{
+    string[] split = ViewBag.Statuses.Split(',');
+
+    var iNum = 0;
+}
+
 
 <table class="table">
     <tr>
@@ -39,10 +45,11 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+    @foreach (var item in Model)
+    {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Status_ID)
+            @split[iNum]
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Customer_ID)
@@ -75,6 +82,6 @@
             <input type="button" class="btn btn-info btn" value="Details" onclick="location.href='@Url.Action("Details", "Work_Orders", new { id = item.Work_Order_ID })'" />
         </td>
     </tr>
-}
+    }
 
 </table>
