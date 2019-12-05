@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Intex.Controllers
 {
-    [Authorize(Roles = "Customer,Engineer,Admin")]
+    
     public class ContactController : Controller
     {
         // GET: Contact
