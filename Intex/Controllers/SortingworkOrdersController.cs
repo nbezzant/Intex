@@ -11,6 +11,7 @@ using Intex.Models;
 
 namespace Intex.Controllers
 {
+    [Authorize(Roles ="Engineer,Admin")]
     public class SortingworkOrdersController : Controller
     {
         private NorthwestLabsContext db = new NorthwestLabsContext();
@@ -18,7 +19,7 @@ namespace Intex.Controllers
         // GET: SortingworkOrders
         public ActionResult Index()
         {
-            return View(db.SortingWorkOrders.OrderBy(x => x.order).ThenByDescending(n => n.Date_Due).ToList());
+            return View(db.SortingWorkOrders.OrderBy(x => x.order).ThenBy(n => n.Date_Due).ToList());
         }
 
         // GET: SortingworkOrders/Details/5
